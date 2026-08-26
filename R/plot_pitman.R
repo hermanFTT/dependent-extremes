@@ -1,0 +1,181 @@
+#!/usr/bin/env Rscript
+# =============================================================================
+# plot_pitman.R -- figures for the Pitman-closeness / relative-efficiency study.
+#
+# Reads the combined tidy table written by combine_pitman.R and produces, for
+# BOTH the shape k and the scale above the threshold sigma*:
+#
+#   1. Pitman closeness   P_hat(k)  vs true k   -- reference line at 0.5
+#   2. Relative efficiency  e(T1,T2) vs true k  -- reference line at 1
+#   3. RMSE of both estimators vs true k        -- two curves on one panel
+#
+# In every plot the x-axis is the TRUE SHAPE value (also for sigma*, whose own
+# true value is essentially fixed but whose estimation difficulty varies with k).
+#
+# Usage:
+#   Rscript R/plot_pitman.R --results=results/pitman_results.rds \
+#                           --outdir=results/figures
+# =============================================================================
+
+suppressPackageStartupMessages(library(ggplot2))
+
+`%||%` <- function(a, b) if (is.null(a)) b else a
+
+opt <- list(results = "results/pitman_results.rds",
+            outdir  = "results/figures",
+            width   = 7.2,
+            height  = 4.6,
+            dpi     = 130,
+            device  = "pdf")
+
+for (a in commandArgs(trailingOnly = TRUE)) {
+  if (!grepl("^--[^=]+=", a)) next
+  key <- sub("^--([^=]+)=.*$", "\\1", a)
+  val <- sub("^--[^=]+=", "", a)
+  if (!key %in% names(opt)) stop("unknown option --", key)
+  opt[[key]] <- if (is.numeric(opt[[key]])) as.numeric(val) else val
+}
+
+res <- readRDS(opt$results)
+dir.create(opt$outdir, recursive = TRUE, showWarnings = FALSE)
+
+T1 <- res$t1[1L]
+T2 <- res$t2[1L]
+
+PAR_LAB <- c(k     = "shape  k",
+             sigma = "scale above threshold  sigma*")
+
+dep_lab <- if (identical(res$dep[1L], "ar1"))
+  sprintf("AR(1), phi = %g", res$dep_par[1L]) else
+  sprintf("Markov %s, alpha = %g", res$dep_model[1L], res$dep_par[1L])
+
+sub_lab <- sprintf("S = %d, n = %d, %s, threshold = %s (p = %g)",
+                   max(res$S), res$n[1L], dep_lab,
+                   res$threshold[1L], res$p_thresh[1L])
+
+COL <- stats::setNames(c("#2166AC", "#D6604D"), c(T1, T2))
+
+base_theme <- theme_bw(base_size = 12) +
+  theme(panel.grid.minor = element_blank(),
+        plot.title       = element_text(size = 12, face = "bold"),
+        plot.subtitle    = element_text(size = 9,  colour = "grey30"),
+        legend.position  = "top")
+
+save_fig <- function(p, name) {
+  f <- file.path(opt$outdir, paste0(name, ".", opt$device))
+  # For PDF prefer cairo_pdf: proper font embedding, and it handles the
+  # plotmath / non-ASCII glyphs in the axis labels correctly.
+  dev <- if (identical(opt$device, "pdf") && isTRUE(capabilities("cairo")))
+           grDevices::cairo_pdf else NULL
+  ggsave(f, p, device = dev,
+         width = opt$width, height = opt$height, dpi = opt$dpi)
+  cat("[plot] ", f, "\n", sep = "")
+}
+
+# -----------------------------------------------------------------------------
+# 1. Pitman closeness
+# -----------------------------------------------------------------------------
+plot_closeness <- function(d, facet = FALSE, ttl = NULL) {
+  d <- d[is.finite(d$p_hat), ]
+  rng <- range(d$k_true)
+  p <- ggplot(d, aes(k_true, p_hat)) +
+    geom_hline(yintercept = 0.5, linetype = "dashed", colour = "grey40") +
+    geom_ribbon(aes(ymin = p_hat - se, ymax = p_hat + se),
+                fill = "#2166AC", alpha = 0.15) +
+    geom_line(colour = "#2166AC", linewidth = 0.9) +
+    geom_point(colour = "#2166AC", size = 1.7) +
+    annotate("text", x = rng[1L], y = Inf, hjust = 0, vjust = 1.4,
+             size = 3.1, colour = "grey25",
+             label = sprintf("above 0.5: %s wins", T1)) +
+    annotate("text", x = rng[1L], y = -Inf, hjust = 0, vjust = -0.8,
+             size = 3.1, colour = "grey25",
+             label = sprintf("below 0.5: %s wins", T2)) +
+    labs(title    = ttl %||% "Pitman closeness",
+         subtitle = sub_lab,
+         x = "true shape  k",
+         y = expression(hat(P)[k](group("|", T[1] - theta, "|") <
+                                  group("|", T[2] - theta, "|")))) +
+    base_theme
+  if (facet) p <- p + facet_wrap(~ parameter, labeller = labeller(parameter = PAR_LAB))
+  p
+}
+
+# -----------------------------------------------------------------------------
+# 2. Relative efficiency  e(T1,T2) = MSE(T2) / MSE(T1)
+# -----------------------------------------------------------------------------
+plot_releff <- function(d, facet = FALSE, ttl = NULL) {
+  d <- d[is.finite(d$rel_eff), ]
+  rng <- range(d$k_true)
+  p <- ggplot(d, aes(k_true, rel_eff)) +
+    geom_hline(yintercept = 1, linetype = "dashed", colour = "grey40") +
+    geom_line(colour = "#5E3C99", linewidth = 0.9) +
+    geom_point(colour = "#5E3C99", size = 1.7) +
+    annotate("text", x = rng[1L], y = Inf, hjust = 0, vjust = 1.4,
+             size = 3.1, colour = "grey25",
+             label = sprintf("above 1: %s preferable", T1)) +
+    annotate("text", x = rng[1L], y = -Inf, hjust = 0, vjust = -0.8,
+             size = 3.1, colour = "grey25",
+             label = sprintf("below 1: %s preferable", T2)) +
+    labs(title    = ttl %||% "Relative efficiency",
+         subtitle = paste0(sub_lab, "   |   e = MSE(", T2, ") / MSE(", T1, ")"),
+         x = "true shape  k", y = expression(e(T[1], T[2]))) +
+    base_theme
+  if (facet) p <- p + facet_wrap(~ parameter, scales = "free_y",
+                                 labeller = labeller(parameter = PAR_LAB))
+  p
+}
+
+# -----------------------------------------------------------------------------
+# 3. RMSE of both estimators
+# -----------------------------------------------------------------------------
+plot_rmse <- function(d, facet = FALSE, ttl = NULL) {
+  long <- rbind(
+    data.frame(parameter = d$parameter, k_true = d$k_true,
+               rmse = d$rmse_t1, procedure = T1),
+    data.frame(parameter = d$parameter, k_true = d$k_true,
+               rmse = d$rmse_t2, procedure = T2))
+  long <- long[is.finite(long$rmse), ]
+  long$procedure <- factor(long$procedure, levels = c(T1, T2))
+
+  p <- ggplot(long, aes(k_true, rmse, colour = procedure, shape = procedure)) +
+    geom_line(linewidth = 0.9) +
+    geom_point(size = 1.7) +
+    scale_colour_manual(values = COL) +
+    labs(title = ttl %||% "RMSE", subtitle = sub_lab,
+         x = "true shape  k", y = "RMSE", colour = NULL, shape = NULL) +
+    base_theme
+  if (facet) p <- p + facet_wrap(~ parameter, scales = "free_y",
+                                 labeller = labeller(parameter = PAR_LAB))
+  p
+}
+
+# -----------------------------------------------------------------------------
+# write everything
+# -----------------------------------------------------------------------------
+for (par in c("k", "sigma")) {
+  d   <- res[res$parameter == par, ]
+  tag <- if (par == "k") "k" else "sigma"
+  lab <- PAR_LAB[[par]]
+
+  save_fig(plot_closeness(d, ttl = paste0("Pitman closeness - ", lab)),
+           paste0("closeness_", tag))
+  save_fig(plot_releff(d,    ttl = paste0("Relative efficiency - ", lab)),
+           paste0("releff_", tag))
+  save_fig(plot_rmse(d,      ttl = paste0("RMSE - ", lab)),
+           paste0("rmse_", tag))
+}
+
+# combined (both parameters side by side)
+wide <- opt$width * 1.45
+old_w <- opt$width; opt$width <- wide
+save_fig(plot_closeness(res, facet = TRUE,
+                        ttl = "Pitman closeness - both parameters"),
+         "closeness_both")
+save_fig(plot_releff(res, facet = TRUE,
+                     ttl = "Relative efficiency - both parameters"),
+         "releff_both")
+save_fig(plot_rmse(res, facet = TRUE, ttl = "RMSE - both parameters"),
+         "rmse_both")
+opt$width <- old_w
+
+cat("[plot] done -> ", opt$outdir, "\n", sep = "")

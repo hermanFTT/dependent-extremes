@@ -1,0 +1,21 @@
+[plot] grid: dep_par=19  n=2  k=2  r=1  approaches=3
+[plot] filters: k= -0.3  n= 2000  dep= 0.55  r=auto
+[plot] results/bias_sensitivity/figures/fig1_bias_vs_dep_k.pdf
+[plot] results/bias_sensitivity/figures/fig3_rmse_vs_dep_k.pdf
+[plot] results/bias_sensitivity/figures/fig2_bias_vs_obs_k.pdf
+[plot] results/bias_sensitivity/figures/fig4_rmse_vs_obs_k.pdf
+[plot] results/bias_sensitivity/figures/fig5_cov_vs_dep_k.pdf
+[plot] results/bias_sensitivity/figures/fig6_cov_vs_obs_k.pdf
+[plot] results/bias_sensitivity/figures/fig7_cov_vs_k_k.pdf
+[plot] results/bias_sensitivity/figures/fig1_bias_vs_dep_sigma.pdf
+[plot] results/bias_sensitivity/figures/fig3_rmse_vs_dep_sigma.pdf
+[plot] results/bias_sensitivity/figures/fig2_bias_vs_obs_sigma.pdf
+[plot] results/bias_sensitivity/figures/fig4_rmse_vs_obs_sigma.pdf
+[plot] results/bias_sensitivity/figures/fig1_bias_vs_dep_zm.pdf
+[plot] results/bias_sensitivity/figures/fig3_rmse_vs_dep_zm.pdf
+[plot] results/bias_sensitivity/figures/fig2_bias_vs_obs_zm.pdf
+[plot] results/bias_sensitivity/figures/fig4_rmse_vs_obs_zm.pdf
+[plot] results/bias_sensitivity/figures/fig5_cov_vs_dep_zm.pdf
+[plot] results/bias_sensitivity/figures/fig6_cov_vs_obs_zm.pdf
+[plot] results/bias_sensitivity/figures/fig7_cov_vs_k_zm.pdf
+[plot] wrote 18 figures -> results/bias_sensitivity/figures

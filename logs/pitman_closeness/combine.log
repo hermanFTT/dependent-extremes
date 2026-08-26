@@ -1,0 +1,2 @@
+[combine] 20 files -> 40 rows (20 grid points x 2 parameters)
+[combine] wrote results/pitman_closeness/pitman_results.rds and results/pitman_closeness/pitman_results.csv

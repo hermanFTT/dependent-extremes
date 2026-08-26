@@ -1,0 +1,307 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: l24-0691
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count
+--------------  -------
+all                   1
+combine               1
+figures               1
+run_grid_point       20
+total                23
+
+Select jobs to execute...
+Execute 16 jobs...
+[Tue Aug 25 22:23:11 2026]
+localrule run_grid_point:
+    output: results/raw/pc_11.rds
+    log: logs/run_pitman_11.log
+    jobid: 13
+    reason: Forced execution
+    wildcards: index=11
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:11 2026]
+localrule run_grid_point:
+    output: results/raw/pc_7.rds
+    log: logs/run_pitman_7.log
+    jobid: 9
+    reason: Forced execution
+    wildcards: index=7
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:11 2026]
+localrule run_grid_point:
+    output: results/raw/pc_14.rds
+    log: logs/run_pitman_14.log
+    jobid: 16
+    reason: Forced execution
+    wildcards: index=14
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:11 2026]
+localrule run_grid_point:
+    output: results/raw/pc_6.rds
+    log: logs/run_pitman_6.log
+    jobid: 8
+    reason: Forced execution
+    wildcards: index=6
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:12 2026]
+localrule run_grid_point:
+    output: results/raw/pc_4.rds
+    log: logs/run_pitman_4.log
+    jobid: 6
+    reason: Forced execution
+    wildcards: index=4
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:12 2026]
+localrule run_grid_point:
+    output: results/raw/pc_17.rds
+    log: logs/run_pitman_17.log
+    jobid: 19
+    reason: Forced execution
+    wildcards: index=17
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:12 2026]
+localrule run_grid_point:
+    output: results/raw/pc_13.rds
+    log: logs/run_pitman_13.log
+    jobid: 15
+    reason: Forced execution
+    wildcards: index=13
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:12 2026]
+localrule run_grid_point:
+    output: results/raw/pc_9.rds
+    log: logs/run_pitman_9.log
+    jobid: 11
+    reason: Forced execution
+    wildcards: index=9
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:12 2026]
+localrule run_grid_point:
+    output: results/raw/pc_5.rds
+    log: logs/run_pitman_5.log
+    jobid: 7
+    reason: Forced execution
+    wildcards: index=5
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:12 2026]
+localrule run_grid_point:
+    output: results/raw/pc_20.rds
+    log: logs/run_pitman_20.log
+    jobid: 22
+    reason: Forced execution
+    wildcards: index=20
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:12 2026]
+localrule run_grid_point:
+    output: results/raw/pc_15.rds
+    log: logs/run_pitman_15.log
+    jobid: 17
+    reason: Forced execution
+    wildcards: index=15
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:12 2026]
+localrule run_grid_point:
+    output: results/raw/pc_1.rds
+    log: logs/run_pitman_1.log
+    jobid: 3
+    reason: Forced execution
+    wildcards: index=1
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:12 2026]
+localrule run_grid_point:
+    output: results/raw/pc_16.rds
+    log: logs/run_pitman_16.log
+    jobid: 18
+    reason: Forced execution
+    wildcards: index=16
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:12 2026]
+localrule run_grid_point:
+    output: results/raw/pc_12.rds
+    log: logs/run_pitman_12.log
+    jobid: 14
+    reason: Forced execution
+    wildcards: index=12
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:12 2026]
+localrule run_grid_point:
+    output: results/raw/pc_8.rds
+    log: logs/run_pitman_8.log
+    jobid: 10
+    reason: Forced execution
+    wildcards: index=8
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:23:12 2026]
+localrule run_grid_point:
+    output: results/raw/pc_19.rds
+    log: logs/run_pitman_19.log
+    jobid: 21
+    reason: Forced execution
+    wildcards: index=19
+    resources: tmpdir=/tmp
+
+Select jobs to execute...
+[Tue Aug 25 22:24:20 2026]
+Finished jobid: 13 (Rule: run_grid_point)
+1 of 23 steps (4%) done
+Execute 1 jobs...
+[Tue Aug 25 22:24:21 2026]
+localrule run_grid_point:
+    output: results/raw/pc_3.rds
+    log: logs/run_pitman_3.log
+    jobid: 5
+    reason: Forced execution
+    wildcards: index=3
+    resources: tmpdir=/tmp
+
+Select jobs to execute...
+[Tue Aug 25 22:24:25 2026]
+Finished jobid: 14 (Rule: run_grid_point)
+2 of 23 steps (9%) done
+Execute 1 jobs...
+[Tue Aug 25 22:24:25 2026]
+localrule run_grid_point:
+    output: results/raw/pc_2.rds
+    log: logs/run_pitman_2.log
+    jobid: 4
+    reason: Forced execution
+    wildcards: index=2
+    resources: tmpdir=/tmp
+
+Select jobs to execute...
+[Tue Aug 25 22:24:25 2026]
+Finished jobid: 21 (Rule: run_grid_point)
+3 of 23 steps (13%) done
+Execute 1 jobs...
+[Tue Aug 25 22:24:25 2026]
+localrule run_grid_point:
+    output: results/raw/pc_18.rds
+    log: logs/run_pitman_18.log
+    jobid: 20
+    reason: Forced execution
+    wildcards: index=18
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:24:25 2026]
+Finished jobid: 7 (Rule: run_grid_point)
+4 of 23 steps (17%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Aug 25 22:24:25 2026]
+localrule run_grid_point:
+    output: results/raw/pc_10.rds
+    log: logs/run_pitman_10.log
+    jobid: 12
+    reason: Forced execution
+    wildcards: index=10
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:24:26 2026]
+Finished jobid: 16 (Rule: run_grid_point)
+5 of 23 steps (22%) done
+[Tue Aug 25 22:24:26 2026]
+Finished jobid: 19 (Rule: run_grid_point)
+6 of 23 steps (26%) done
+[Tue Aug 25 22:24:26 2026]
+Finished jobid: 6 (Rule: run_grid_point)
+7 of 23 steps (30%) done
+[Tue Aug 25 22:24:27 2026]
+Finished jobid: 18 (Rule: run_grid_point)
+8 of 23 steps (35%) done
+[Tue Aug 25 22:24:28 2026]
+Finished jobid: 3 (Rule: run_grid_point)
+9 of 23 steps (39%) done
+[Tue Aug 25 22:24:29 2026]
+Finished jobid: 11 (Rule: run_grid_point)
+10 of 23 steps (43%) done
+[Tue Aug 25 22:24:29 2026]
+Finished jobid: 10 (Rule: run_grid_point)
+11 of 23 steps (48%) done
+[Tue Aug 25 22:24:29 2026]
+Finished jobid: 15 (Rule: run_grid_point)
+12 of 23 steps (52%) done
+[Tue Aug 25 22:24:29 2026]
+Finished jobid: 9 (Rule: run_grid_point)
+13 of 23 steps (57%) done
+[Tue Aug 25 22:24:29 2026]
+Finished jobid: 8 (Rule: run_grid_point)
+14 of 23 steps (61%) done
+[Tue Aug 25 22:24:30 2026]
+Finished jobid: 17 (Rule: run_grid_point)
+15 of 23 steps (65%) done
+[Tue Aug 25 22:24:32 2026]
+Finished jobid: 22 (Rule: run_grid_point)
+16 of 23 steps (70%) done
+[Tue Aug 25 22:24:51 2026]
+Finished jobid: 5 (Rule: run_grid_point)
+17 of 23 steps (74%) done
+[Tue Aug 25 22:24:51 2026]
+Finished jobid: 20 (Rule: run_grid_point)
+18 of 23 steps (78%) done
+[Tue Aug 25 22:24:51 2026]
+Finished jobid: 4 (Rule: run_grid_point)
+19 of 23 steps (83%) done
+[Tue Aug 25 22:24:52 2026]
+Finished jobid: 12 (Rule: run_grid_point)
+20 of 23 steps (87%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Aug 25 22:24:52 2026]
+localrule combine:
+    input: results/raw/pc_1.rds, results/raw/pc_2.rds, results/raw/pc_3.rds, results/raw/pc_4.rds, results/raw/pc_5.rds, results/raw/pc_6.rds, results/raw/pc_7.rds, results/raw/pc_8.rds, results/raw/pc_9.rds, results/raw/pc_10.rds, results/raw/pc_11.rds, results/raw/pc_12.rds, results/raw/pc_13.rds, results/raw/pc_14.rds, results/raw/pc_15.rds, results/raw/pc_16.rds, results/raw/pc_17.rds, results/raw/pc_18.rds, results/raw/pc_19.rds, results/raw/pc_20.rds
+    output: results/pitman_results.rds, results/pitman_results.csv
+    log: logs/combine.log
+    jobid: 2
+    reason: Forced execution
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:24:53 2026]
+Finished jobid: 2 (Rule: combine)
+21 of 23 steps (91%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Aug 25 22:24:53 2026]
+localrule figures:
+    input: results/pitman_results.rds
+    output: results/figures/closeness_k.png, results/figures/releff_k.png, results/figures/rmse_k.png, results/figures/closeness_sigma.png, results/figures/releff_sigma.png, results/figures/rmse_sigma.png, results/figures/closeness_both.png, results/figures/releff_both.png, results/figures/rmse_both.png
+    log: logs/plot.log
+    jobid: 1
+    reason: Forced execution
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:24:54 2026]
+Finished jobid: 1 (Rule: figures)
+22 of 23 steps (96%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Aug 25 22:24:54 2026]
+localrule all:
+    input: results/figures/closeness_k.png, results/figures/releff_k.png, results/figures/rmse_k.png, results/figures/closeness_sigma.png, results/figures/releff_sigma.png, results/figures/rmse_sigma.png, results/figures/closeness_both.png, results/figures/releff_both.png, results/figures/rmse_both.png, results/pitman_results.csv
+    jobid: 0
+    reason: Forced execution
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 22:24:54 2026]
+Finished jobid: 0 (Rule: all)
+23 of 23 steps (100%) done
+Complete log(s): /u/84/tessoh1/data/Desktop/Git Repositories/dependent-extremes/.snakemake/log/2026-08-25T222311.868275.snakemake.log

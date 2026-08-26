@@ -1,0 +1,3 @@
+[run_pitman] grid point 14/20  k = +0.1842  S = 1000  Weighted GPD vs Conventional  (1 core)
+k = +0.1842 | n_ok = 1000/1000 | k: P=0.702 e=1.223 | sigma*: P=0.417 e=3.393 | 73.1s
+[run_pitman] wrote results/raw/pc_14.rds

@@ -1,0 +1,3 @@
+[run_pitman] grid point 23/50  k = -0.0510  S = 5000  Weighted GPD vs Conventional  (1 core)
+k = -0.0510 | n_ok = 5000/5000 | k: P=0.686 e=1.389 | sigma*: P=0.409 e=1.805 | 287.8s
+[run_pitman] wrote results/pitman_closeness/raw/pc_23.rds

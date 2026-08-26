@@ -1,0 +1,58 @@
+# =============================================================================
+# Reproducible environment for the Pitman-closeness / relative-efficiency
+# pipeline (Snakefile + R/*.R).
+#
+# Create and activate:
+#
+#   conda env create -f environment.yaml     # or: mamba env create -f ...
+#   conda activate dependent-extremes
+#   Rscript R/install_cran_deps.R            # POT -- not packaged for conda
+#   snakemake --cores 16
+#
+# Versions are pinned to what the pipeline was developed and validated against
+# (R 4.3.3 / ggplot2 3.5.2 / snakemake 9.4.1).
+#
+# NOTE ON R:
+#   This file ships its own R so the environment is self-contained on any
+#   machine.  If you would rather keep using the system R at /usr/bin/R
+#   (which already has these packages), delete the whole "R stack" block
+#   below -- Snakemake only needs `Rscript` to be on PATH.
+#
+# NOTE ON `%||%`:
+#   The code targets R 4.3.x, which has no base `%||%` (added in 4.4.0);
+#   the scripts define it themselves, so both 4.3 and 4.4+ work.
+# =============================================================================
+name: dependent-extremes
+
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+
+dependencies:
+  # --- workflow engine ------------------------------------------------------
+  - python=3.12
+  - snakemake=9.4.1
+  - pulp=2.8            # snakemake's scheduler ILP backend; >=2.9 breaks v9.4
+
+  # --- R stack (delete this block to use the system R instead) -------------
+  - r-base=4.3.3
+  - r-ggplot2=3.5.2     # plotting
+  - r-scales=1.4.0      # ggplot2 dependency, used for axis formatting
+  - r-matrixstats=1.5.0 # rowMeans2 / logSumExp in gpdfit()
+  - r-hdinterval=0.2.4  # HPD intervals (used by sim_compare in weighted_gpdfit.R)
+
+  # Needed to build POT from source in the step below
+  - compilers
+
+# -----------------------------------------------------------------------------
+# NOT AVAILABLE ON CONDA:  POT (>= 1.1.11)
+#
+# POT::simmc() drives the `dep: markov` simulations, but POT is not packaged on
+# conda-forge or bioconda (only an unrelated `bioconductor-potra`).  Install it
+# from CRAN after creating the environment:
+#
+#   Rscript R/install_cran_deps.R
+#
+# That script is idempotent -- it only installs what is missing.
+# -----------------------------------------------------------------------------

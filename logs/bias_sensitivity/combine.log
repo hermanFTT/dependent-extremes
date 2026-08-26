@@ -1,0 +1,3 @@
+[combine] 76 cells -> 684 rows
+[combine] grid: dep_type=log | dep_par=19 | k=2 | n=2 | r=auto
+[combine] wrote results/bias_sensitivity/bias_results.rds and results/bias_sensitivity/bias_results.csv

@@ -1,0 +1,41 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: l24-0691
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job        count
+-------  -------
+all            1
+figures        1
+total          2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Aug 25 23:41:16 2026]
+localrule figures:
+    input: results/pitman_closeness/pitman_results.rds
+    output: results/pitman_closeness/figures/closeness_k.pdf, results/pitman_closeness/figures/releff_k.pdf, results/pitman_closeness/figures/rmse_k.pdf, results/pitman_closeness/figures/closeness_sigma.pdf, results/pitman_closeness/figures/releff_sigma.pdf, results/pitman_closeness/figures/rmse_sigma.pdf, results/pitman_closeness/figures/closeness_both.pdf, results/pitman_closeness/figures/releff_both.pdf, results/pitman_closeness/figures/rmse_both.pdf
+    log: logs/pitman_closeness/plot.log
+    jobid: 0
+    reason: Forced execution
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 23:41:17 2026]
+Finished jobid: 0 (Rule: figures)
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Aug 25 23:41:17 2026]
+localrule all:
+    input: results/pitman_closeness/figures/closeness_k.pdf, results/pitman_closeness/figures/releff_k.pdf, results/pitman_closeness/figures/rmse_k.pdf, results/pitman_closeness/figures/closeness_sigma.pdf, results/pitman_closeness/figures/releff_sigma.pdf, results/pitman_closeness/figures/rmse_sigma.pdf, results/pitman_closeness/figures/closeness_both.pdf, results/pitman_closeness/figures/releff_both.pdf, results/pitman_closeness/figures/rmse_both.pdf, results/pitman_closeness/pitman_results.csv
+    jobid: 12
+    reason: Input files updated by another job: results/pitman_closeness/figures/releff_k.pdf, results/pitman_closeness/figures/rmse_both.pdf, results/pitman_closeness/figures/releff_sigma.pdf, results/pitman_closeness/figures/releff_both.pdf, results/pitman_closeness/figures/rmse_sigma.pdf, results/pitman_closeness/figures/rmse_k.pdf, results/pitman_closeness/figures/closeness_k.pdf, results/pitman_closeness/figures/closeness_sigma.pdf, results/pitman_closeness/figures/closeness_both.pdf
+    resources: tmpdir=/tmp
+
+[Tue Aug 25 23:41:17 2026]
+Finished jobid: 12 (Rule: all)
+2 of 2 steps (100%) done
+Complete log(s): /u/84/tessoh1/data/Desktop/Git Repositories/dependent-extremes/.snakemake/log/2026-08-25T234116.051093.snakemake.log

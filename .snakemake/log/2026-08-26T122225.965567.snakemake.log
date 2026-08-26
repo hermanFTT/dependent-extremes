@@ -1,0 +1,140 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: l24-0691
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job         count
+--------  -------
+all             1
+combine         1
+figures         1
+run_cell      125
+total         128
+
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Aug 26 12:22:26 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.3_k-0.2_n20000_rauto.rds
+    log: logs/bias_sensitivity/run_dp0.3_k-0.2_n20000_rauto.log
+    jobid: 29
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.3_k-0.2_n20000_rauto.rds
+    wildcards: cell=dp0.3_k-0.2_n20000_rauto
+    resources: tmpdir=/tmp
+
+Select jobs to execute...
+[Wed Aug 26 12:25:47 2026]
+Finished jobid: 29 (Rule: run_cell)
+1 of 128 steps (1%) done
+Execute 1 jobs...
+[Wed Aug 26 12:25:47 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.98_k-0.2_n1000_rauto.rds
+    log: logs/bias_sensitivity/run_dp0.98_k-0.2_n1000_rauto.log
+    jobid: 102
+    reason: Params have changed since last execution: Union of exclusive params before and now across all output: before: '--dep_type=log --dep_par=0.98 --k=-0.2 --n=1000 --r=auto --n_rep=100 --sigma=1.0 --p_thresh=0.95 --threshold=empirical --m_ret=1000 --coverage=TRUE --cred_mass=0.95 --interval=hpd --n_draws=10000 --n_grid=50 --min_grid_pts=100 --wip=FALSE --approaches="Conventional,Weighted GPD,Cluster maxima (POT)" --seed=20250' now: '--dep_type=log --dep_par=0.98 --k=-0.2 --n=1000 --r=auto --n_rep=1000 --sigma=1.0 --p_thresh=0.95 --threshold=empirical --m_ret=1000 --coverage=TRUE --cred_mass=0.95 --interval=hpd --n_draws=10000 --n_grid=50 --min_grid_pts=100 --wip=FALSE --approaches="Conventional,Weighted GPD,Cluster maxima (POT)" --seed=20250' 
+    wildcards: cell=dp0.98_k-0.2_n1000_rauto
+    resources: tmpdir=/tmp
+
+Select jobs to execute...
+[Wed Aug 26 12:26:04 2026]
+Finished jobid: 102 (Rule: run_cell)
+2 of 128 steps (2%) done
+Execute 1 jobs...
+[Wed Aug 26 12:26:04 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.1_k0.0_n1000_rauto.rds
+    log: logs/bias_sensitivity/run_dp0.1_k0.0_n1000_rauto.log
+    jobid: 12
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.1_k0.0_n1000_rauto.rds
+    wildcards: cell=dp0.1_k0.0_n1000_rauto
+    resources: tmpdir=/tmp
+
+Select jobs to execute...
+[Wed Aug 26 12:26:20 2026]
+Finished jobid: 12 (Rule: run_cell)
+3 of 128 steps (2%) done
+Execute 1 jobs...
+[Wed Aug 26 12:26:20 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.1_k0.4_n4000_rauto.rds
+    log: logs/bias_sensitivity/run_dp0.1_k0.4_n4000_rauto.log
+    jobid: 25
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.1_k0.4_n4000_rauto.rds
+    wildcards: cell=dp0.1_k0.4_n4000_rauto
+    resources: tmpdir=/tmp
+
+Select jobs to execute...
+[Wed Aug 26 12:27:02 2026]
+Finished jobid: 25 (Rule: run_cell)
+4 of 128 steps (3%) done
+Execute 1 jobs...
+[Wed Aug 26 12:27:02 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.5_k-0.2_n4000_rauto.rds
+    log: logs/bias_sensitivity/run_dp0.5_k-0.2_n4000_rauto.log
+    jobid: 55
+    reason: Params have changed since last execution: Union of exclusive params before and now across all output: before: '--dep_type=log --dep_par=0.5 --k=-0.2 --n=4000 --r=auto --n_rep=100 --sigma=1.0 --p_thresh=0.95 --threshold=empirical --m_ret=1000 --coverage=TRUE --cred_mass=0.95 --interval=hpd --n_draws=10000 --n_grid=50 --min_grid_pts=100 --wip=FALSE --approaches="Conventional,Weighted GPD,Cluster maxima (POT)" --seed=20250' now: '--dep_type=log --dep_par=0.5 --k=-0.2 --n=4000 --r=auto --n_rep=1000 --sigma=1.0 --p_thresh=0.95 --threshold=empirical --m_ret=1000 --coverage=TRUE --cred_mass=0.95 --interval=hpd --n_draws=10000 --n_grid=50 --min_grid_pts=100 --wip=FALSE --approaches="Conventional,Weighted GPD,Cluster maxima (POT)" --seed=20250' 
+    wildcards: cell=dp0.5_k-0.2_n4000_rauto
+    resources: tmpdir=/tmp
+
+Select jobs to execute...
+[Wed Aug 26 12:27:42 2026]
+Finished jobid: 55 (Rule: run_cell)
+5 of 128 steps (4%) done
+Execute 1 jobs...
+[Wed Aug 26 12:27:42 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.98_k0.0_n4000_rauto.rds
+    log: logs/bias_sensitivity/run_dp0.98_k0.0_n4000_rauto.log
+    jobid: 115
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.98_k0.0_n4000_rauto.rds
+    wildcards: cell=dp0.98_k0.0_n4000_rauto
+    resources: tmpdir=/tmp
+
+Select jobs to execute...
+[Wed Aug 26 12:28:26 2026]
+Finished jobid: 115 (Rule: run_cell)
+6 of 128 steps (5%) done
+Execute 1 jobs...
+[Wed Aug 26 12:28:26 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.1_k0.2_n4000_rauto.rds
+    log: logs/bias_sensitivity/run_dp0.1_k0.2_n4000_rauto.log
+    jobid: 20
+    reason: Params have changed since last execution: Union of exclusive params before and now across all output: before: '--dep_type=log --dep_par=0.1 --k=0.2 --n=4000 --r=auto --n_rep=100 --sigma=1.0 --p_thresh=0.95 --threshold=empirical --m_ret=1000 --coverage=TRUE --cred_mass=0.95 --interval=hpd --n_draws=10000 --n_grid=50 --min_grid_pts=100 --wip=FALSE --approaches="Conventional,Weighted GPD,Cluster maxima (POT)" --seed=20250' now: '--dep_type=log --dep_par=0.1 --k=0.2 --n=4000 --r=auto --n_rep=1000 --sigma=1.0 --p_thresh=0.95 --threshold=empirical --m_ret=1000 --coverage=TRUE --cred_mass=0.95 --interval=hpd --n_draws=10000 --n_grid=50 --min_grid_pts=100 --wip=FALSE --approaches="Conventional,Weighted GPD,Cluster maxima (POT)" --seed=20250' 
+    wildcards: cell=dp0.1_k0.2_n4000_rauto
+    resources: tmpdir=/tmp
+
+Select jobs to execute...
+[Wed Aug 26 12:29:08 2026]
+Finished jobid: 20 (Rule: run_cell)
+7 of 128 steps (5%) done
+Execute 1 jobs...
+[Wed Aug 26 12:29:08 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.3_k0.0_n12000_rauto.rds
+    log: logs/bias_sensitivity/run_dp0.3_k0.0_n12000_rauto.log
+    jobid: 38
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.3_k0.0_n12000_rauto.rds
+    wildcards: cell=dp0.3_k0.0_n12000_rauto
+    resources: tmpdir=/tmp
+
+Select jobs to execute...
+[Wed Aug 26 12:31:05 2026]
+Finished jobid: 38 (Rule: run_cell)
+8 of 128 steps (6%) done
+Execute 1 jobs...
+[Wed Aug 26 12:31:05 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.3_k0.4_n8000_rauto.rds
+    log: logs/bias_sensitivity/run_dp0.3_k0.4_n8000_rauto.log
+    jobid: 51
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.3_k0.4_n8000_rauto.rds
+    wildcards: cell=dp0.3_k0.4_n8000_rauto
+    resources: tmpdir=/tmp
+
+Select jobs to execute...

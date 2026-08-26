@@ -1,0 +1,10 @@
+[plot] results/pitman_closeness/figures/closeness_k.pdf
+[plot] results/pitman_closeness/figures/releff_k.pdf
+[plot] results/pitman_closeness/figures/rmse_k.pdf
+[plot] results/pitman_closeness/figures/closeness_sigma.pdf
+[plot] results/pitman_closeness/figures/releff_sigma.pdf
+[plot] results/pitman_closeness/figures/rmse_sigma.pdf
+[plot] results/pitman_closeness/figures/closeness_both.pdf
+[plot] results/pitman_closeness/figures/releff_both.pdf
+[plot] results/pitman_closeness/figures/rmse_both.pdf
+[plot] done -> results/pitman_closeness/figures
