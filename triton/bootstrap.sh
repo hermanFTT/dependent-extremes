@@ -74,13 +74,55 @@ if [ ! -x "$SNAKEMAKE_ENV/bin/x86_64-conda-linux-gnu-cc" ]; then
 fi
 
 echo "[bootstrap] snakemake $(snakemake --version)"
-echo "[bootstrap] compiler  $(command -v x86_64-conda-linux-gnu-cc)"
 
-# --- 2. R packages ----------------------------------------------------------
+# --- 2. force R to use that toolchain, via ~/.R/Makevars --------------------
+# CONFIRMED NECESSARY: shadowing the compiler name earlier on PATH was not
+# enough -- R's Makeconf appears to invoke the compiler by an absolute path
+# baked in at build time, not a PATH lookup. A user Makevars file is always
+# read by R and always overrides Makeconf's CC/CXX/FC, regardless of how
+# Makeconf itself set them, so this works independent of that mechanism.
+CC_BIN=$(command -v x86_64-conda-linux-gnu-cc  || command -v x86_64-conda-linux-gnu-gcc || true)
+CXX_BIN=$(command -v x86_64-conda-linux-gnu-c++ || command -v x86_64-conda-linux-gnu-g++ || true)
+FC_BIN=$(command -v x86_64-conda-linux-gnu-gfortran || true)
+AR_BIN=$(command -v x86_64-conda-linux-gnu-ar || true)
+RANLIB_BIN=$(command -v x86_64-conda-linux-gnu-ranlib || true)
+
+if [ -z "$CC_BIN" ] || [ -z "$FC_BIN" ]; then
+    echo "[bootstrap] ERROR: expected compiler binaries not found on PATH."
+    echo "  looked for x86_64-conda-linux-gnu-{cc,gcc,c++,g++,gfortran,ar,ranlib} in:"
+    echo "    $SNAKEMAKE_ENV/bin"
+    echo "  actual contents matching 'gnu-':"
+    ls "$SNAKEMAKE_ENV"/bin | grep -i gnu- || echo "    (none found)"
+    exit 1
+fi
+
+echo "[bootstrap] pinning R's compiler via ~/.R/Makevars:"
+echo "    CC = $CC_BIN"
+echo "    FC = $FC_BIN"
+
+mkdir -p "$HOME/.R"
+if [ -f "$HOME/.R/Makevars" ] && ! grep -q "dependent-extremes bootstrap" "$HOME/.R/Makevars"; then
+    cp "$HOME/.R/Makevars" "$HOME/.R/Makevars.bak.$(date +%s)"
+    echo "[bootstrap] existing ~/.R/Makevars backed up (was not ours)"
+fi
+
+cat > "$HOME/.R/Makevars" <<EOF
+# Written by dependent-extremes bootstrap ($(date))
+# Overrides scicomp-r-env's own incomplete compiler driver with the
+# conda-forge 'compilers' toolchain installed into $SNAKEMAKE_ENV.
+CC     = $CC_BIN
+CXX    = $CXX_BIN
+FC     = $FC_BIN
+F77    = $FC_BIN
+AR     = $AR_BIN
+RANLIB = $RANLIB_BIN
+EOF
+
+# --- 3. R packages ----------------------------------------------------------
 echo "[bootstrap] installing R packages into $R_LIBS_USER ..."
 Rscript R/install_cran_deps.R
 
-# --- 3. verify --------------------------------------------------------------
+# --- 4. verify --------------------------------------------------------------
 echo "[bootstrap] verifying that every package loads ..."
 Rscript -e '
 pkgs <- c("POT", "matrixStats", "HDInterval", "ggplot2", "scales")
@@ -90,11 +132,11 @@ for (p in pkgs)
 bad <- pkgs[!vapply(pkgs, requireNamespace, logical(1), quietly = TRUE)]
 if (length(bad))
   stop("could not load: ", paste(bad, collapse = ", "),
-       "\n(POT needs a working C/Fortran toolchain -- is the conda `compilers`",
-       "\npackage on PATH ahead of scicomp-r-env? see triton/bootstrap.sh step 1)")
+       "\n(check ~/.R/Makevars points at a working compiler -- see",
+       "\ntriton/bootstrap.sh step 2)")
 cat("All R dependencies OK.\n")'
 
-# --- 4. smoke test ----------------------------------------------------------
+# --- 5. smoke test ----------------------------------------------------------
 echo "[bootstrap] smoke-testing one tiny cell (this may take a minute) ..."
 Rscript R/run_bias.R --dep_type=log --dep_par=0.5 --k=0.3 --n=2000 \
     --r=auto --n_rep=2 --coverage=FALSE \
