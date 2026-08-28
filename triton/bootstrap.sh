@@ -27,9 +27,18 @@ mkdir -p logs
 # shellcheck source=/dev/null
 source triton/env.sh
 
-# --- 1. snakemake env -------------------------------------------------------
+# --- 1. snakemake env + a full matching C/Fortran toolchain -----------------
+# POT has C/Fortran sources. scicomp-r-env's own bundled compiler driver
+# (x86_64-conda-linux-gnu-cc) is only what R itself was built with -- it is
+# missing cc1, its actual backend, and fails with
+# "cannot execute 'cc1': posix_spawnp: No such file or directory".
+# Fix (already the plan in environment.yaml): conda-forge's `compilers`
+# metapackage, a complete, self-contained gcc/gfortran. We install it into
+# THIS conda env; since triton/env.sh always puts this env's bin/ ahead of
+# scicomp-r-env's on PATH, its same-named compiler binary shadows the broken
+# one -- R keeps calling "x86_64-conda-linux-gnu-cc" and now gets a working one.
 if [ -d "$SNAKEMAKE_ENV" ]; then
-    echo "[bootstrap] conda env already exists, skipping creation"
+    echo "[bootstrap] conda env already exists"
 else
     echo "[bootstrap] creating conda env (takes a few minutes) ..."
     # `module load mamba` is used ONLY here, ONCE. It shares an Lmod family
@@ -44,14 +53,28 @@ else
         python=3.12 \
         snakemake=9.4.1 \
         'pulp=2.8' \
-        snakemake-executor-plugin-slurm
+        snakemake-executor-plugin-slurm \
+        compilers
     # Restore R (this in turn unloads mamba again -- fine, the env is now on
     # disk and triton/env.sh reaches it via PATH, not via the module).
     module load scicomp-r-env
 fi
 
 export PATH="$SNAKEMAKE_ENV/bin:$PATH"
+
+# Env pre-existed (e.g. created before this script added `compilers` above)
+# but lacks a working compiler: patch it in now. Idempotent -- a no-op once
+# present.
+if [ ! -x "$SNAKEMAKE_ENV/bin/x86_64-conda-linux-gnu-cc" ]; then
+    echo "[bootstrap] env exists but has no working compiler -- installing 'compilers' ..."
+    module load mamba
+    mamba install -y -n dependent-extremes -c conda-forge compilers
+    module load scicomp-r-env
+    export PATH="$SNAKEMAKE_ENV/bin:$PATH"
+fi
+
 echo "[bootstrap] snakemake $(snakemake --version)"
+echo "[bootstrap] compiler  $(command -v x86_64-conda-linux-gnu-cc)"
 
 # --- 2. R packages ----------------------------------------------------------
 echo "[bootstrap] installing R packages into $R_LIBS_USER ..."
@@ -67,7 +90,8 @@ for (p in pkgs)
 bad <- pkgs[!vapply(pkgs, requireNamespace, logical(1), quietly = TRUE)]
 if (length(bad))
   stop("could not load: ", paste(bad, collapse = ", "),
-       "\n(POT needs a working C/Fortran toolchain -- is `module load gcc` active?)")
+       "\n(POT needs a working C/Fortran toolchain -- is the conda `compilers`",
+       "\npackage on PATH ahead of scicomp-r-env? see triton/bootstrap.sh step 1)")
 cat("All R dependencies OK.\n")'
 
 # --- 4. smoke test ----------------------------------------------------------
