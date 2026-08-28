@@ -28,10 +28,16 @@ mkdir -p logs
 source triton/env.sh
 
 # --- 1. snakemake env -------------------------------------------------------
-if [ -d "$CONDA_ENVS_PATH/dependent-extremes" ]; then
+if [ -d "$SNAKEMAKE_ENV" ]; then
     echo "[bootstrap] conda env already exists, skipping creation"
 else
     echo "[bootstrap] creating conda env (takes a few minutes) ..."
+    # `module load mamba` is used ONLY here, ONCE. It shares an Lmod family
+    # with scicomp-r-env and unloads it as a side effect ("Lmod is
+    # automatically replacing scicomp-r-env with mamba") -- harmless at this
+    # point since we are not using R yet, but we must reload it below before
+    # any further Rscript call.
+    module load mamba
     # pulp is pinned: >= 2.9 breaks snakemake 9.4's scheduler ILP backend.
     mamba create -y -n dependent-extremes \
         -c conda-forge -c bioconda \
@@ -39,9 +45,12 @@ else
         snakemake=9.4.1 \
         'pulp=2.8' \
         snakemake-executor-plugin-slurm
+    # Restore R (this in turn unloads mamba again -- fine, the env is now on
+    # disk and triton/env.sh reaches it via PATH, not via the module).
+    module load scicomp-r-env
 fi
 
-source activate dependent-extremes
+export PATH="$SNAKEMAKE_ENV/bin:$PATH"
 echo "[bootstrap] snakemake $(snakemake --version)"
 
 # --- 2. R packages ----------------------------------------------------------

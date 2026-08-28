@@ -35,18 +35,24 @@ export MKL_NUM_THREADS=1
 
 # --- Snakemake --------------------------------------------------------------
 # Conda envs live in WRKDIR: $HOME is only 10 GB and this env is ~1 GB.
-module load mamba
+#
+# IMPORTANT: we do NOT `module load mamba` here. On Triton it shares an Lmod
+# family with scicomp-r-env, so loading it silently UNLOADS R ("Lmod is
+# automatically replacing scicomp-r-env with mamba"), which then breaks every
+# `Rscript` call inside the snakemake rules. The mamba module is only ever
+# needed once, to CREATE the env (see triton/bootstrap.sh) -- to USE an
+# already-built env we just need its own bin/ on PATH, no module required.
 export CONDA_ENVS_PATH="$WRKDIR/conda-envs"
-mkdir -p "$CONDA_ENVS_PATH"
+export CONDA_PKGS_DIRS="$WRKDIR/conda-pkgs"
+mkdir -p "$CONDA_ENVS_PATH" "$CONDA_PKGS_DIRS"
 
-# Activate only if it exists, so this file is safe to source before
-# triton/bootstrap.sh has ever been run.
-if [ -d "$CONDA_ENVS_PATH/dependent-extremes" ]; then
-    source activate dependent-extremes
+SNAKEMAKE_ENV="$CONDA_ENVS_PATH/dependent-extremes"
+if [ -d "$SNAKEMAKE_ENV/bin" ]; then
+    export PATH="$SNAKEMAKE_ENV/bin:$PATH"
 fi
 
 echo "[env] R           : $(command -v Rscript) (${_R_MM})"
 echo "[env] R_LIBS_USER : $R_LIBS_USER"
 echo "[env] snakemake   : $(command -v snakemake 2>/dev/null || echo '(not installed -- run triton/bootstrap.sh)')"
 
-unset _R_MM
+unset _R_MM SNAKEMAKE_ENV
