@@ -1,0 +1,5 @@
+# Placeholder so `logs/` survives a fresh clone.
+#
+# Slurm opens the `#SBATCH --output=logs/...` file before the job script runs,
+# so this directory must exist at `sbatch` time or the job fails immediately
+# with no usable error message.
