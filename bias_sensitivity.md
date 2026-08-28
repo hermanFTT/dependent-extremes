@@ -114,10 +114,10 @@ Outputs are namespaced under `results/bias_sensitivity/` and
 config/bias_sensitivity.yaml
           |
           v
-      run_cell  x (dep_par x k x n x r)     <- parallel: one job per cell
+      run_cell  x (dep_par x k x n x r x m)  <- parallel: one job per cell
      (R/run_bias.R)                            each runs S replicates
           |
-          v   results/bias_sensitivity/raw/dp0.5_k0.2_n4000_rauto.rds ...
+          v   results/bias_sensitivity/raw/dp0.5_k0.2_n4000_rauto_m1000.rds ...
       combine
    (R/combine_bias.R)
           |
@@ -128,13 +128,16 @@ config/bias_sensitivity.yaml
           v   results/bias_sensitivity/figures/*.pdf
 ```
 
-**One cell** = `(dep_type, dep_par, k, n, r)`.  Within a cell, `S` series are
+**One cell** = `(dep_type, dep_par, k, n, r, m)`.  Within a cell, `S` series are
 simulated; **all three approaches are fitted to the same sample**, so the
 comparison is paired.  A replicate is discarded for *every* approach if any
-one of them fails, which keeps the pairing intact.
+one of them fails, which keeps the pairing intact.  `m` only affects the
+`z_m` target -- `k` and `sigma*` estimates are identical across cells that
+differ only in `m` (same simulated series, same seed).
 
-Cell file names are self-describing (`dp0.5_k0.2_n4000_rauto.rds`), so adding
-a new `n` or `k` never renumbers existing cells and only the new ones are run.
+Cell file names are self-describing (`dp0.5_k0.2_n4000_rauto_m1000.rds`), so
+adding a new `n`, `k` or `m` never renumbers existing cells and only the new
+ones are run.
 
 The estimators come from `weighted_gpdfit.R`.  It is **not** `source()`d
 directly — the file ends with a live scratch block (`sim <- sim_compare(...)`,
@@ -178,7 +181,7 @@ conda activate snakemake
 snakemake -s bias_sensitivity.smk --cores 16
 ```
 
-The default grid is 5 dep × 5 k × 5 n × 1 r = **125 cells**; at `n_rep: 1000`
+The default grid is 5 dep × 5 k × 5 n × 1 r × 1 m = **125 cells**; at `n_rep: 1000`
 this was measured at **33 min wall-clock on 16 cores** (~7 CPU-hours).  Cost is
 dominated by the largest `n` (an `n = 20000` cell with `S = 1000` takes ~3 min
 on one core, versus ~17 s at `n = 1000`).  Coverage roughly doubles the cost;
@@ -197,6 +200,9 @@ snakemake -s bias_sensitivity.smk --cores 16 \
 
 # compare run lengths instead of using automatic selection
 snakemake -s bias_sensitivity.smk --cores 16 --config run_len='["auto",5,10,20]'
+
+# compare several return periods for z_m in the same run
+snakemake -s bias_sensitivity.smk --cores 16 --config m_ret='[100,1000,10000]'
 
 # switch dependence structure (note nlog uses a (0.1, 30) grid)
 snakemake -s bias_sensitivity.smk --cores 16 \
@@ -239,7 +245,7 @@ subset of approaches, with:
 
 ```bash
 Rscript R/plot_bias.R --results=... --outdir=... \
-  --fix_k=0.2 --fix_dep=0.5 --fix_r=auto \
+  --fix_k=0.2 --fix_dep=0.5 --fix_r=auto --fix_m=1000 \
   --approaches="Weighted GPD,Conventional"
 ```
 
@@ -247,7 +253,10 @@ Figures are named `fig<N>_<metric>_vs_<x>_<target>.pdf`, matching the table
 above (e.g. `fig5_cov_vs_dep_k.pdf`).  Only the applicable ones are written:
 `sigma` has no coverage, so figures 5–7 are produced for `k` and `zm` only.
 If more than one run length is simulated, an extra `fig8_rmse_by_runlength_k`
-compares them.
+compares them; if more than one return period `m` is simulated, an extra
+`fig9_rmse_by_returnperiod_zm` compares those (`m` only affects the `zm`
+target, so it has no bearing on the `k`/`sigma` figures beyond the `--fix_m`
+filter).
 
 > **Caveat on staleness.** As with the other experiments, changing a parameter
 > re-runs the affected cells only if Snakemake's provenance metadata in

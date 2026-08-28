@@ -6,7 +6,7 @@
 #   Rscript R/combine_bias.R --out_rds=results/bias_sensitivity/bias_results.rds \
 #           --out_csv=results/bias_sensitivity/bias_results.csv  <cell files...>
 #
-# Output: one row per (dep_type, dep_par, k, n, r) x approach x parameter,
+# Output: one row per (dep_type, dep_par, k, n, r, m) x approach x parameter,
 # which is what the plotting script filters and groups by.
 # =============================================================================
 
@@ -35,7 +35,7 @@ res$approach  <- factor(res$approach,
 res$parameter <- factor(res$parameter, levels = c("k", "sigma", "zm"))
 
 res <- res[order(res$dep_type, res$dep_par, res$k_true, res$n,
-                 res$r_label, res$parameter, res$approach), ]
+                 res$r_label, res$m, res$parameter, res$approach), ]
 rownames(res) <- NULL
 
 dir.create(dirname(opt$out_rds), recursive = TRUE, showWarnings = FALSE)
@@ -43,11 +43,12 @@ saveRDS(res, opt$out_rds)
 utils::write.csv(res, opt$out_csv, row.names = FALSE)
 
 cat(sprintf("[combine] %d cells -> %d rows\n", length(files), nrow(res)))
-cat(sprintf("[combine] grid: dep_type=%s | dep_par=%d | k=%d | n=%d | r=%s\n",
+cat(sprintf("[combine] grid: dep_type=%s | dep_par=%d | k=%d | n=%d | r=%s | m=%s\n",
             paste(unique(res$dep_type), collapse = ","),
             length(unique(res$dep_par)), length(unique(res$k_true)),
             length(unique(res$n)),
-            paste(unique(res$r_label), collapse = ",")))
+            paste(unique(res$r_label), collapse = ","),
+            paste(unique(res$m), collapse = ",")))
 cat("[combine] wrote ", opt$out_rds, " and ", opt$out_csv, "\n", sep = "")
 
 nbad <- sum(res$n_ok < res$S)

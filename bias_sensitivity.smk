@@ -7,7 +7,7 @@
 #
 # The unit of work is ONE CELL of the grid
 #
-#       dep_par  x  k_grid  x  n_obs  x  run_len
+#       dep_par  x  k_grid  x  n_obs  x  run_len  x  m_ret
 #
 # and all cells are independent, so the whole product runs in parallel.
 #
@@ -50,14 +50,15 @@ DEP_PARS = as_list(config["dep_par"])
 K_GRID   = as_list(config["k_grid"])
 N_OBS    = as_list(config["n_obs"])
 RUN_LEN  = as_list(config["run_len"])
+M_RET    = as_list(config["m_ret"])
 
 # --- expand the cartesian product into one named cell per combination -------
 # The cell name is self-describing, so results are readable on disk and adding
 # a new value never renumbers the existing cells.
 CELLS = {}
-for dp, k, n, r in itertools.product(DEP_PARS, K_GRID, N_OBS, RUN_LEN):
-    name = "dp{}_k{}_n{}_r{}".format(tok(dp), tok(k), tok(n), tok(r))
-    CELLS[name] = dict(dep_par=dp, k=k, n=n, r=r)
+for dp, k, n, r, m in itertools.product(DEP_PARS, K_GRID, N_OBS, RUN_LEN, M_RET):
+    name = "dp{}_k{}_n{}_r{}_m{}".format(tok(dp), tok(k), tok(n), tok(r), tok(m))
+    CELLS[name] = dict(dep_par=dp, k=k, n=n, r=r, m=m)
 
 CELL_NAMES = sorted(CELLS)
 
@@ -69,7 +70,7 @@ def cell_flags(wildcards):
         f"--k={c['k']} --n={c['n']} --r={c['r']} "
         f"--n_rep={config['n_rep']} --sigma={config['sigma']} "
         f"--p_thresh={config['p_thresh']} --threshold={config['threshold']} "
-        f"--m_ret={config['m_ret']} "
+        f"--m_ret={c['m']} "
         f"--coverage={str(config['coverage']).upper()} "
         f"--cred_mass={config['cred_mass']} --interval={config['interval']} "
         f"--n_draws={config['n_draws']} "
@@ -137,13 +138,14 @@ rule figures:
         fix_k=config.get("fix_k", ""),
         fix_dep=config.get("fix_dep", ""),
         fix_r=config.get("fix_r", ""),
+        fix_m=config.get("fix_m", ""),
     shell:
         "mkdir -p " + LOG_DIR + " && "
         "Rscript R/plot_bias.R --results={input} --outdir=" + FIG_DIR + " "
         "--device={params.device} --dpi={params.dpi} "
         '--approaches="{params.approaches}" '
         '--fix_k="{params.fix_k}" --fix_dep="{params.fix_dep}" '
-        '--fix_r="{params.fix_r}" > {log} 2>&1'
+        '--fix_r="{params.fix_r}" --fix_m="{params.fix_m}" > {log} 2>&1'
 
 
 # --- remove ONLY this experiment's outputs ----------------------------------

@@ -6,7 +6,11 @@
 #
 # The unit of work is ONE GRID CELL:
 #
-#     (dep_type, dep_par, k, n, r)
+#     (dep_type, dep_par, k, n, r, m)
+#
+# `m` (the return period) only affects the z_m target -- k and sigma estimates
+# are identical across cells that differ only in m, since m enters the fit
+# solely through the return-level computation, not the GPD parameter fit.
 #
 # Within a cell, S dependent series are simulated and ALL requested approaches
 # are fitted to the SAME sample, so the comparison is paired.  For each of the
@@ -129,7 +133,7 @@ fit_approach <- function(approach, x, u, run_s, rparams,
 # -----------------------------------------------------------------------------
 # bias_one_cell()
 #
-# Runs S replicates for a single (dep_type, dep_par, k, n, r) cell.
+# Runs S replicates for a single (dep_type, dep_par, k, n, r, m) cell.
 #
 # Reproducibility: one independent L'Ecuyer-CMRG substream per replicate, so
 # results do not depend on `ncores` or on scheduling order.
@@ -333,8 +337,8 @@ bias_one_cell <- function(dep_type,
   out$secs      <- as.numeric(difftime(Sys.time(), t0, units = "secs"))
 
   if (verbose)
-    cat(sprintf("%s=%g k=%+.2f n=%d r=%s | %d/%d ok | n_exc~%.0f | %.1fs\n",
-                dep_type, dep_par, k, n, out$r_label[1L], n_ok, S,
+    cat(sprintf("%s=%g k=%+.2f n=%d r=%s m=%g | %d/%d ok | n_exc~%.0f | %.1fs\n",
+                dep_type, dep_par, k, n, out$r_label[1L], m, n_ok, S,
                 out$n_exc[1L], out$secs[1L]))
 
   out

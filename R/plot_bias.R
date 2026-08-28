@@ -27,8 +27,11 @@
 # Usage:
 #   Rscript R/plot_bias.R --results=results/bias_sensitivity/bias_results.rds \
 #                         --outdir=results/bias_sensitivity/figures
-#   Rscript R/plot_bias.R ... --fix_k=0.2 --fix_r=auto \
+#   Rscript R/plot_bias.R ... --fix_k=0.2 --fix_r=auto --fix_m=1000 \
 #                         --approaches="Weighted GPD,Conventional"
+#
+# If more than one m (return period) was simulated, an extra
+# fig9_rmse_by_returnperiod_zm compares them (m only affects the z_m target).
 # =============================================================================
 
 suppressPackageStartupMessages(library(ggplot2))
@@ -43,6 +46,7 @@ opt <- list(
   fix_n      = "",
   fix_dep    = "",
   fix_r      = "",
+  fix_m      = "",      # return period m held fixed (only zm depends on it)
   width      = 8.2,
   height     = 5.0,
   dpi        = 130,
@@ -173,17 +177,19 @@ n_dep <- length(unique(res$dep_par))
 n_obs <- length(unique(res$n))
 n_k   <- length(unique(res$k_true))
 n_r   <- length(unique(res$r_label))
+n_m   <- length(unique(res$m))
 
-cat(sprintf("[plot] grid: dep_par=%d  n=%d  k=%d  r=%d  approaches=%d\n",
-            n_dep, n_obs, n_k, n_r, nlevels(droplevels(res$approach))))
+cat(sprintf("[plot] grid: dep_par=%d  n=%d  k=%d  r=%d  m=%d  approaches=%d\n",
+            n_dep, n_obs, n_k, n_r, n_m, nlevels(droplevels(res$approach))))
 
 fix_k <- pick(res$k_true,  opt$fix_k)
 fix_n <- pick(res$n,       opt$fix_n)
 fix_d <- pick(res$dep_par, opt$fix_dep)
 fix_r <- pick(res$r_label, opt$fix_r)
+fix_m <- pick(res$m,       opt$fix_m)
 
-cat(sprintf("[plot] filters: k=%s  n=%s  dep=%s  r=%s\n",
-            fmt(fix_k), fmt(fix_n), fmt(fix_d), fmt(fix_r)))
+cat(sprintf("[plot] filters: k=%s  n=%s  dep=%s  r=%s  m=%s\n",
+            fmt(fix_k), fmt(fix_n), fmt(fix_d), fmt(fix_r), fmt(fix_m)))
 
 n_written <- 0L
 emit <- function(p, name) {
@@ -198,23 +204,23 @@ for (par in levels(droplevels(res$parameter))) {
 
   # --- 1 & 3: x = dependence level, faceted by observation size ------------
   emit(make_plot(d, "dep_par", "bias", "n_exc_nom",
-                 list(k_true = fix_k, r_label = fix_r),
+                 list(k_true = fix_k, r_label = fix_r, m = fix_m),
                  paste0("Bias vs dependence - ", lab), hline = 0),
        paste0("fig1_bias_vs_dep_", par))
 
   emit(make_plot(d, "dep_par", "rmse", "n_exc_nom",
-                 list(k_true = fix_k, r_label = fix_r),
+                 list(k_true = fix_k, r_label = fix_r, m = fix_m),
                  paste0("RMSE vs dependence - ", lab)),
        paste0("fig3_rmse_vs_dep_", par))
 
   # --- 2 & 4: x = observation size, faceted by dependence level ------------
   emit(make_plot(d, "n_exc_nom", "bias", "dep_par",
-                 list(k_true = fix_k, r_label = fix_r),
+                 list(k_true = fix_k, r_label = fix_r, m = fix_m),
                  paste0("Bias vs observation size - ", lab), hline = 0),
        paste0("fig2_bias_vs_obs_", par))
 
   emit(make_plot(d, "n_exc_nom", "rmse", "dep_par",
-                 list(k_true = fix_k, r_label = fix_r),
+                 list(k_true = fix_k, r_label = fix_r, m = fix_m),
                  paste0("RMSE vs observation size - ", lab)),
        paste0("fig4_rmse_vs_obs_", par))
 
@@ -222,17 +228,17 @@ for (par in levels(droplevels(res$parameter))) {
   if (par != "sigma" && any(is.finite(d$coverage))) {
 
     emit(make_plot(d, "dep_par", "coverage", "n_exc_nom",
-                   list(k_true = fix_k, r_label = fix_r),
+                   list(k_true = fix_k, r_label = fix_r, m = fix_m),
                    paste0("Coverage vs dependence - ", lab), hline = nominal),
          paste0("fig5_cov_vs_dep_", par))
 
     emit(make_plot(d, "n_exc_nom", "coverage", "dep_par",
-                   list(k_true = fix_k, r_label = fix_r),
+                   list(k_true = fix_k, r_label = fix_r, m = fix_m),
                    paste0("Coverage vs observation size - ", lab), hline = nominal),
          paste0("fig6_cov_vs_obs_", par))
 
     emit(make_plot(d, "k_true", "coverage", "n_exc_nom",
-                   list(dep_par = fix_d, r_label = fix_r),
+                   list(dep_par = fix_d, r_label = fix_r, m = fix_m),
                    paste0("Coverage vs true k - ", lab), hline = nominal),
          paste0("fig7_cov_vs_k_", par))
   }
@@ -256,6 +262,28 @@ if (n_r > 1L) {
                 colour = NULL, shape = NULL) +
            base_theme,
          "fig8_rmse_by_runlength_k")
+}
+
+# --- return-period comparison, if more than one m was simulated ------------
+# m only affects the z_m target (k and sigma do not depend on it), so this
+# is the one figure where m belongs on an axis rather than in the filters.
+if (n_m > 1L) {
+  d <- res[res$parameter == "zm", ]
+  d <- d[d$k_true == fix_k & d$dep_par == fix_d & d$r_label == fix_r, ]
+  d <- d[is.finite(d$rmse), ]
+  if (nrow(d))
+    emit(ggplot(d, aes(n_exc_nom, rmse, colour = approach, shape = approach)) +
+           geom_line(linewidth = 0.8) + geom_point(size = 1.7) +
+           scale_colour_manual(values = COL, drop = TRUE) +
+           facet_wrap(~ m, scales = "free_y", labeller = labeller(.default = function(v)
+             paste0("m = ", v))) +
+           labs(title = "RMSE of z_m by return period",
+                subtitle = sprintf("dependence: %s = %s   |   k = %s   |   r = %s   |   S = %d",
+                                   dep_type, fmt(fix_d), fmt(fix_k), fmt(fix_r), max(d$S)),
+                x = "observation size   n (1 - u)", y = "RMSE",
+                colour = NULL, shape = NULL) +
+           base_theme,
+         "fig9_rmse_by_returnperiod_zm")
 }
 
 cat("[plot] wrote ", n_written, " figures -> ", opt$outdir, "\n", sep = "")
