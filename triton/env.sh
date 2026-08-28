@@ -46,7 +46,9 @@ export CONDA_ENVS_PATH="$WRKDIR/conda-envs"
 export CONDA_PKGS_DIRS="$WRKDIR/conda-pkgs"
 mkdir -p "$CONDA_ENVS_PATH" "$CONDA_PKGS_DIRS"
 
-SNAKEMAKE_ENV="$CONDA_ENVS_PATH/dependent-extremes"
+# Exported (not unset) -- triton/bootstrap.sh needs this to know where to
+# create/find the env, including under `set -u`.
+export SNAKEMAKE_ENV="$CONDA_ENVS_PATH/dependent-extremes"
 if [ -d "$SNAKEMAKE_ENV/bin" ]; then
     export PATH="$SNAKEMAKE_ENV/bin:$PATH"
 fi
@@ -55,4 +57,4 @@ echo "[env] R           : $(command -v Rscript) (${_R_MM})"
 echo "[env] R_LIBS_USER : $R_LIBS_USER"
 echo "[env] snakemake   : $(command -v snakemake 2>/dev/null || echo '(not installed -- run triton/bootstrap.sh)')"
 
-unset _R_MM SNAKEMAKE_ENV
+unset _R_MM
