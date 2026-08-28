@@ -27,72 +27,61 @@ mkdir -p logs
 # shellcheck source=/dev/null
 source triton/env.sh
 
-# --- 1. snakemake env + a full matching C/Fortran toolchain -----------------
-# POT has C/Fortran sources. scicomp-r-env's own bundled compiler driver
-# (x86_64-conda-linux-gnu-cc) is only what R itself was built with -- it is
-# missing cc1, its actual backend, and fails with
-# "cannot execute 'cc1': posix_spawnp: No such file or directory".
-# Fix (already the plan in environment.yaml): conda-forge's `compilers`
-# metapackage, a complete, self-contained gcc/gfortran. We install it into
-# THIS conda env; since triton/env.sh always puts this env's bin/ ahead of
-# scicomp-r-env's on PATH, its same-named compiler binary shadows the broken
-# one -- R keeps calling "x86_64-conda-linux-gnu-cc" and now gets a working one.
+# --- 1. snakemake env --------------------------------------------------------
 if [ -d "$SNAKEMAKE_ENV" ]; then
-    echo "[bootstrap] conda env already exists"
+    echo "[bootstrap] conda env already exists, skipping creation"
 else
-    echo "[bootstrap] creating conda env (takes a few minutes) ..."
-    # `module load mamba` is used ONLY here, ONCE. It shares an Lmod family
-    # with scicomp-r-env and unloads it as a side effect ("Lmod is
-    # automatically replacing scicomp-r-env with mamba") -- harmless at this
-    # point since we are not using R yet, but we must reload it below before
-    # any further Rscript call.
+    echo "[bootstrap] creating conda env (takes a while -- conda's classic"
+    echo "  solver is slower than mamba's, be patient) ..."
+    # `module load mamba` is used ONLY here, ONCE, purely to get the `conda`
+    # binary onto PATH -- Triton has no separate "conda" module, this is the
+    # module that provides it. It shares an Lmod family with scicomp-r-env
+    # and unloads it as a side effect ("Lmod is automatically replacing
+    # scicomp-r-env with mamba") -- harmless at this point since we are not
+    # using R yet, but we must reload it below before any further Rscript
+    # call.
     module load mamba
+    # `conda create`, not `mamba create`: avoids the libmamba solver's own
+    # package-cache warning ("Could not create directory .../pkgs: Read-only
+    # file system") seen with the mamba backend on this module.
     # pulp is pinned: >= 2.9 breaks snakemake 9.4's scheduler ILP backend.
-    mamba create -y -n dependent-extremes \
+    conda create -y -n dependent-extremes \
         -c conda-forge -c bioconda \
         python=3.12 \
         snakemake=9.4.1 \
         'pulp=2.8' \
-        snakemake-executor-plugin-slurm \
-        compilers
+        snakemake-executor-plugin-slurm
     # Restore R (this in turn unloads mamba again -- fine, the env is now on
     # disk and triton/env.sh reaches it via PATH, not via the module).
     module load scicomp-r-env
+    # scicomp-r-env's reload does not restore the compiler modules, so redo
+    # them too -- needed by the Makevars step below.
+    module load gcc gmake binutils
 fi
 
 export PATH="$SNAKEMAKE_ENV/bin:$PATH"
-
-# Env pre-existed (e.g. created before this script added `compilers` above)
-# but lacks a working compiler: patch it in now. Idempotent -- a no-op once
-# present.
-if [ ! -x "$SNAKEMAKE_ENV/bin/x86_64-conda-linux-gnu-cc" ]; then
-    echo "[bootstrap] env exists but has no working compiler -- installing 'compilers' ..."
-    module load mamba
-    mamba install -y -n dependent-extremes -c conda-forge compilers
-    module load scicomp-r-env
-    export PATH="$SNAKEMAKE_ENV/bin:$PATH"
-fi
-
 echo "[bootstrap] snakemake $(snakemake --version)"
 
-# --- 2. force R to use that toolchain, via ~/.R/Makevars --------------------
-# CONFIRMED NECESSARY: shadowing the compiler name earlier on PATH was not
-# enough -- R's Makeconf appears to invoke the compiler by an absolute path
-# baked in at build time, not a PATH lookup. A user Makevars file is always
-# read by R and always overrides Makeconf's CC/CXX/FC, regardless of how
-# Makeconf itself set them, so this works independent of that mechanism.
-CC_BIN=$(command -v x86_64-conda-linux-gnu-cc  || command -v x86_64-conda-linux-gnu-gcc || true)
-CXX_BIN=$(command -v x86_64-conda-linux-gnu-c++ || command -v x86_64-conda-linux-gnu-g++ || true)
-FC_BIN=$(command -v x86_64-conda-linux-gnu-gfortran || true)
-AR_BIN=$(command -v x86_64-conda-linux-gnu-ar || true)
-RANLIB_BIN=$(command -v x86_64-conda-linux-gnu-ranlib || true)
+# --- 2. force R to use `module load gcc gmake binutils`, via ~/.R/Makevars --
+# POT has C/Fortran sources. scicomp-r-env's own bundled compiler driver is
+# only what R itself was built with -- it is missing cc1, its actual backend
+# ("cannot execute 'cc1': posix_spawnp: No such file or directory"). The fix
+# is the real toolchain modules loaded by triton/env.sh (gcc, gmake,
+# binutils). Merely having them on PATH is not enough, though: R's Makeconf
+# appears to invoke the compiler by an absolute path baked in at build time,
+# not a PATH lookup. A user Makevars file is always read by R and always
+# overrides Makeconf's CC/CXX/FC regardless of how Makeconf itself set them,
+# so this works independent of that mechanism.
+CC_BIN=$(command -v gcc || true)
+CXX_BIN=$(command -v g++ || true)
+FC_BIN=$(command -v gfortran || true)
+AR_BIN=$(command -v ar || true)
+RANLIB_BIN=$(command -v ranlib || true)
 
 if [ -z "$CC_BIN" ] || [ -z "$FC_BIN" ]; then
-    echo "[bootstrap] ERROR: expected compiler binaries not found on PATH."
-    echo "  looked for x86_64-conda-linux-gnu-{cc,gcc,c++,g++,gfortran,ar,ranlib} in:"
-    echo "    $SNAKEMAKE_ENV/bin"
-    echo "  actual contents matching 'gnu-':"
-    ls "$SNAKEMAKE_ENV"/bin | grep -i gnu- || echo "    (none found)"
+    echo "[bootstrap] ERROR: gcc/gfortran not found on PATH after"
+    echo "  'module load gcc gmake binutils'. Check 'module avail gcc' for the"
+    echo "  right name/version on this Triton generation."
     exit 1
 fi
 
@@ -108,8 +97,9 @@ fi
 
 cat > "$HOME/.R/Makevars" <<EOF
 # Written by dependent-extremes bootstrap ($(date))
-# Overrides scicomp-r-env's own incomplete compiler driver with the
-# conda-forge 'compilers' toolchain installed into $SNAKEMAKE_ENV.
+# Overrides scicomp-r-env's own incomplete compiler driver with the real
+# Triton toolchain modules (module load gcc gmake binutils, see triton/env.sh).
+# Regenerate: bash triton/bootstrap.sh
 CC     = $CC_BIN
 CXX    = $CXX_BIN
 FC     = $FC_BIN

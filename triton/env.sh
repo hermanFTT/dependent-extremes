@@ -17,8 +17,10 @@
 # For a bare R instead, replace the next line with:  module load r
 module load scicomp-r-env
 
-# gcc: POT has C/Fortran sources and must be compiled from CRAN.
-module load gcc
+# POT has C/Fortran sources and must be compiled from CRAN. scicomp-r-env's
+# own bundled compiler is only what R itself was built with -- it is missing
+# cc1, its actual backend -- so a real, separate toolchain module is needed.
+module load gcc gmake binutils
 
 # Private library for packages the module does not provide. Keyed by R
 # major.minor so switching R versions can never mix incompatible builds.
