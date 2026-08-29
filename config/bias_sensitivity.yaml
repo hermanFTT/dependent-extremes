@@ -53,11 +53,6 @@ n_grid:       50     # q-grid size for the CRPS-optimal weights
 min_grid_pts: 100
 wip:          false  # weakly-informative prior on k
 
-# --- resources --------------------------------------------------------------
-# Cores used WITHIN one cell. Keep at 1 and let snakemake run many cells at
-# once; raise only when there are fewer cells than cores.
-threads_per_job: 1
-
 # --- figures ----------------------------------------------------------------
 fig_device: "pdf"
 fig_dpi:    130

@@ -97,7 +97,12 @@ rule run_cell:
         RAW_DIR + "/{cell}.rds",
     log:
         LOG_DIR + "/run_{cell}.log",
-    threads: int(config.get("threads_per_job", 1))
+    # No fixed core count in the config: each job uses whatever cores are
+    # available at run time -- i.e. whatever `--cores` was passed locally, or
+    # whatever the executor's `set-threads`/`set-resources` assigns per job
+    # (profiles/slurm/config.yaml pins this to 1 for cluster runs, since we
+    # parallelise over cells rather than within one).
+    threads: workflow.cores
     params:
         flags=cell_flags,
     shell:

@@ -1,0 +1,92 @@
+# =============================================================================
+# Slurm profile for dependent-extremes' Snakemake workflows on Aalto Triton.
+#
+# Adapted from AaltoRSE/snakemake-triton-example (parameter-grid/profiles/
+# slurm/config.yaml). The main differences from that example:
+#
+#   - There is no per-rule conda env (no `envs/*.yml`, no
+#     `--software-deployment-method conda`): the whole pipeline (snakemake +
+#     R + packages) lives in ONE conda env built from environment.yaml, which
+#     is activated once in bias_sensitivity_slurm.sh before `snakemake` runs.
+#   - `jobs`/`retries`/`keep-going`/`latency-wait` are raised well above the
+#     example's defaults because bias_sensitivity.smk's grid is much bigger
+#     than a toy width x height example (thousands of cells, see below).
+#
+# Rules covered: run_cell, combine, figures (bias_sensitivity.smk).
+# pitman_closeness.smk has its own, much smaller/cheaper grid (one job per
+# true-shape value) -- use profiles/slurm_pitman/ for that workflow instead
+# of this one.
+#
+#   snakemake -s bias_sensitivity.smk --profile profiles/slurm/ --cores 2
+#
+# See:
+#   https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#standard-resources
+#   https://scicomp.aalto.fi/triton/tut/slurm/
+# =============================================================================
+
+# Tell snakemake to use Slurm
+executor: slurm
+
+# Max number of Slurm jobs snakemake keeps submitted/queued at once.
+#
+# The default grid in config/bias_sensitivity.yaml is
+#   19 dep_par x 20 k_grid x 6 n_obs x 1 run_len x 2 m_ret = 4560 cells
+# i.e. up to 4560 `run_cell` jobs plus `combine` and `figures`. Keep this
+# comfortably under Triton's per-user job/QOS limits -- check with
+# `sacctmgr show user $USER withassoc` if unsure -- and lower it if you see
+# `QOSMaxSubmitJobPerUserLimit` in the Slurm logs. Raise/lower together with
+# the grid size in config/bias_sensitivity.yaml.
+jobs: 100
+
+# Resubmit a failed job with escalated mem/runtime (see `attempt` below)
+# instead of giving up immediately. Useful here because cell cost varies a
+# lot across the grid (n_obs=1000 vs 10000; coverage: true roughly doubles
+# it) and Triton nodes occasionally reclaim or OOM-kill jobs.
+retries: 2
+
+# Triton's shared filesystem can lag behind job completion; wait this long
+# for expected output files to show up before declaring a job failed.
+latency-wait: 60
+
+# Keep computing the rest of the (large) grid even if a handful of cells
+# fail outright after all retries -- inspect logs/bias_sensitivity/*.log and
+# rerun just the missing cells afterwards.
+keep-going: true
+
+# Default resources for every rule (overridden per rule below).
+default-resources:
+  slurm_partition: batch
+  mem_mb: 1000
+  runtime: 30          # minutes
+
+# "threads" == Slurm's "cpus-per-task". bias_sensitivity.smk itself sets
+# `run_cell`'s threads to `workflow.cores` (i.e. "use whatever is available"
+# -- see the rule), which is fine for local runs but would ask Slurm for the
+# whole job's `--cores` budget per cell. Pin every rule to 1 here instead, so
+# Slurm parallelises over CELLS (thousands of 1-core jobs) rather than over
+# cores within a single cell.
+set-threads:
+  run_cell: 8
+  combine: 1
+  figures: 1
+
+# Per-rule memory / walltime.
+#
+# `run_cell` fits one grid cell: S = n_rep replicates of a length-n_obs
+# series, three approaches per replicate. The values below are sized to
+# cover the heaviest cell in config/bias_sensitivity.yaml (n_obs=10000,
+# n_rep=10000, coverage: true) with headroom, and `attempt` scales the
+# request up automatically on a Slurm-triggered retry. Tighten these once
+# you have real timings from logs/bias_sensitivity/run_*.log -- e.g.
+# n_obs=1000 cells finish in a small fraction of this.
+set-resources:
+  run_cell:
+    mem_mb: 4000
+    runtime: 60
+  combine:
+    # reads every raw/*.rds cell (thousands of small files) into one table
+    mem_mb: 4000
+    runtime: 20
+  figures:
+    mem_mb: 2000
+    runtime: 10
