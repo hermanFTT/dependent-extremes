@@ -1,0 +1,15 @@
+# Emacs backup / auto-save files
+*~
+\#*\#
+.#*
+
+# Snakemake state (locks, incomplete markers, cached DAG metadata)
+.snakemake/
+
+# Local conda env created by *_slurm.sh (mamba env create --prefix env/)
+env/
+
+# R session / editor cruft
+.Rhistory
+.RData
+.Rproj.user/

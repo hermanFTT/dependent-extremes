@@ -97,12 +97,12 @@ rule run_cell:
         RAW_DIR + "/{cell}.rds",
     log:
         LOG_DIR + "/run_{cell}.log",
-    # No fixed core count in the config: each job uses whatever cores are
-    # available at run time -- i.e. whatever `--cores` was passed locally, or
-    # whatever the executor's `set-threads`/`set-resources` assigns per job
-    # (profiles/slurm/config.yaml pins this to 1 for cluster runs, since we
-    # parallelise over cells rather than within one).
-    threads: workflow.cores
+    # Cores used WITHIN one cell. Defaults to 1, so plain
+    # `snakemake -s bias_sensitivity.smk --cores N` packs N cells running
+    # concurrently instead of one cell hogging all of them. Override per-run
+    # (without editing this file) with e.g.:
+    #   snakemake -s bias_sensitivity.smk --cores N --set-threads run_cell=K
+    threads: 1
     params:
         flags=cell_flags,
     shell:
