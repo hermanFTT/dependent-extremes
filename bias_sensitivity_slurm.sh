@@ -55,8 +55,5 @@ module load r
 # nothing to set high: no rule actually runs locally on this node, this
 # number is only used by Snakemake's own scheduler bookkeeping. Raise it
 # again if you ever raise a rule's threads above this.
-snakemake \
-  --snakefile bias_sensitivity.smk \
-  --profile profiles/slurm/ \
-  --cores 16 \
-  --rerun-incomplete
+snakemake --snakefile bias_sensitivity.smk  --profile profiles/slurm/ --cores 16 
+  

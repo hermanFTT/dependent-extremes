@@ -66,7 +66,7 @@ default-resources:
 # Slurm parallelises over CELLS (thousands of 1-core jobs) rather than over
 # cores within a single cell.
 set-threads:
-  run_cell: 8
+  run_cell: 16
   combine: 1
   figures: 1
 
@@ -81,12 +81,12 @@ set-threads:
 # n_obs=1000 cells finish in a small fraction of this.
 set-resources:
   run_cell:
-    mem_mb: attempt * 4000
-    runtime: attempt * 60
+    mem_mb: 4000
+    runtime: 60
   combine:
     # reads every raw/*.rds cell (thousands of small files) into one table
-    mem_mb: attempt * 4000
-    runtime: attempt * 20
+    mem_mb: 4000
+    runtime: 20
   figures:
-    mem_mb: attempt * 2000
-    runtime: attempt * 10
+    mem_mb: 2000
+    runtime: 20
