@@ -44,6 +44,13 @@ module load triton/2024.1-gcc
 module load r
 
 
+# NB on --cores: even for jobs submitted to Slurm, Snakemake clamps each
+# job's threads to min(threads/set-threads, --cores) -- so this must stay
+# >= the highest set-threads value used by any rule in
+# profiles/slurm_pitman/config.yaml (currently 1 for every rule, hence 2 is
+# fine here, but bump this together with set-threads if you ever raise
+# run_grid_point above 2 -- see bias_sensitivity_slurm.sh, which hit exactly
+# this with run_cell: 8 vs. an unraised --cores 2).
 snakemake \
   --snakefile pitman_closeness.smk \
   --profile profiles/slurm_pitman/ \

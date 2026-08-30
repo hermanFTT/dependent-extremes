@@ -47,8 +47,16 @@ module load r
 # is idempotent -- it only installs what's missing -- so re-running it here
 # on every submission is cheap and keeps the shared env self-healing.
 
+# NB on --cores: even for jobs submitted to Slurm, Snakemake clamps each
+# job's threads to min(threads/set-threads, --cores) -- so this must be >=
+# the highest set-threads value used by any rule in profiles/slurm/
+# config.yaml (currently run_cell: 8), or `set-threads: run_cell: 8` gets
+# silently reduced (e.g. to 2, if left at the old --cores 2). It costs
+# nothing to set high: no rule actually runs locally on this node, this
+# number is only used by Snakemake's own scheduler bookkeeping. Raise it
+# again if you ever raise a rule's threads above this.
 snakemake \
   --snakefile bias_sensitivity.smk \
   --profile profiles/slurm/ \
-  --cores 2 \
+  --cores 16 \
   --rerun-incomplete
