@@ -3,7 +3,7 @@
 #SBATCH --time=1-00:00:00                 # UNVERIFIED starting guess -- benchmark first! This is
                                            # partition batch`). Benchmark a small subset first (see
                                            # below) before trusting this number.
-#SBATCH --cpus-per-task=80                # Real core budget for the WHOLE run now (all cells run
+#SBATCH --cpus-per-task=200                # Real core budget for the WHOLE run now (all cells run
                                            # as local processes inside this one job/node -- there is
                                            # no cluster-wide distribution anymore). Must not exceed a
                                            # single node's core count or the job will sit PENDING
@@ -65,9 +65,13 @@ source activate env/
 module load triton/2024.1-gcc
 module load r
 
+# unlock, just in case the program didn't finished on previous run
+#snakemake -s bias_sensitivity.smk --cores 1 --unlock
+
 snakemake \
   --snakefile bias_sensitivity.smk \
-  --cores 80 \
+  --until run_cell\
+  --cores 200 \
   --set-threads run_cell=4 \
   --keep-going \
-  
+ --rerun-incomplete  

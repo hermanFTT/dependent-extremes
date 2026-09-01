@@ -1,0 +1,1472 @@
+Building DAG of jobs...
+Unlocked working directory.
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Job stats:
+job         count
+--------  -------
+run_cell       92
+total          92
+
+Select jobs to execute...
+Execute 8 jobs...
+
+[Mon Aug 31 18:52:25 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.2_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.2_k-0.3_n20000_rauto_m2000.log
+    jobid: 36
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.2_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.2_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+[Mon Aug 31 18:52:25 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.65_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.65_k0.3_n20000_rauto_m2000.log
+    jobid: 96
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.65_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.65_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+[Mon Aug 31 18:52:25 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.05_k0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.05_k0.3_n15000_rauto_m2000.log
+    jobid: 6
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.05_k0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.05_k0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+[Mon Aug 31 18:52:25 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.4_k-0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.4_k-0.3_n15000_rauto_m2000.log
+    jobid: 66
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.4_k-0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.4_k-0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+[Mon Aug 31 18:52:25 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.85_k0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.85_k0.3_n15000_rauto_m2000.log
+    jobid: 126
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.85_k0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.85_k0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+[Mon Aug 31 18:52:25 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp1_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp1_k-0.3_n20000_rauto_m2000.log
+    jobid: 156
+    reason: Missing output files: results/bias_sensitivity/raw/dp1_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp1_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+[Mon Aug 31 18:52:25 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.75_k0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.75_k0.3_n20000_rauto_m4000.log
+    jobid: 113
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.75_k0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.75_k0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+[Mon Aug 31 18:52:25 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.1_k-0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.1_k-0.3_n15000_rauto_m4000.log
+    jobid: 19
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.1_k-0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.1_k-0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 19:58:04 2026]
+Finished job 6.
+1 of 95 steps (1%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 19:58:04 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.95_k-0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.95_k-0.3_n15000_rauto_m4000.log
+    jobid: 139
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.95_k-0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.95_k-0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 20:03:26 2026]
+Finished job 19.
+2 of 95 steps (2%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 20:03:26 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.35_k0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.35_k0.3_n20000_rauto_m4000.log
+    jobid: 49
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.35_k0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.35_k0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 20:05:02 2026]
+Finished job 66.
+3 of 95 steps (3%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 20:05:02 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.75_k-0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.75_k-0.3_n20000_rauto_m4000.log
+    jobid: 109
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.75_k-0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.75_k-0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 20:09:44 2026]
+Finished job 126.
+4 of 95 steps (4%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 20:09:44 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.85_k-0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.85_k-0.3_n15000_rauto_m2000.log
+    jobid: 122
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.85_k-0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.85_k-0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 20:13:37 2026]
+Finished job 36.
+5 of 95 steps (5%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 20:13:37 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.05_k-0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.05_k-0.3_n15000_rauto_m2000.log
+    jobid: 2
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.05_k-0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.05_k-0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 20:19:24 2026]
+Finished job 96.
+6 of 95 steps (6%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 20:19:24 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.45_k0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.45_k0.3_n15000_rauto_m2000.log
+    jobid: 62
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.45_k0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.45_k0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 20:23:04 2026]
+Finished job 113.
+7 of 95 steps (7%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 20:23:04 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.25_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.25_k0.3_n20000_rauto_m2000.log
+    jobid: 32
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.25_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.25_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 20:24:56 2026]
+Finished job 156.
+8 of 95 steps (8%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 20:24:56 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.65_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.65_k-0.3_n20000_rauto_m2000.log
+    jobid: 92
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.65_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.65_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 21:28:29 2026]
+Finished job 139.
+9 of 95 steps (9%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 21:28:29 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.9_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.9_k0.3_n20000_rauto_m2000.log
+    jobid: 152
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.9_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.9_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 21:34:56 2026]
+Finished job 2.
+10 of 95 steps (11%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 21:34:56 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.35_k0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.35_k0.3_n15000_rauto_m2000.log
+    jobid: 46
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.35_k0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.35_k0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 21:38:40 2026]
+Finished job 49.
+11 of 95 steps (12%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 21:38:40 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.75_k-0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.75_k-0.3_n15000_rauto_m2000.log
+    jobid: 106
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.75_k-0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.75_k-0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 21:46:58 2026]
+Finished job 109.
+12 of 95 steps (13%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 21:46:58 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.15_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.15_k0.3_n20000_rauto_m2000.log
+    jobid: 16
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.15_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.15_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 21:48:49 2026]
+Finished job 122.
+13 of 95 steps (14%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 21:48:49 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.55_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.55_k-0.3_n20000_rauto_m2000.log
+    jobid: 76
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.55_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.55_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 21:50:24 2026]
+Finished job 62.
+14 of 95 steps (15%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 21:50:24 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.8_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.8_k0.3_n20000_rauto_m2000.log
+    jobid: 136
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.8_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.8_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 21:59:33 2026]
+Finished job 32.
+15 of 95 steps (16%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 21:59:33 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.6_k0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.6_k0.3_n20000_rauto_m4000.log
+    jobid: 105
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.6_k0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.6_k0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 22:11:34 2026]
+Finished job 92.
+16 of 95 steps (17%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 22:11:34 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.35_k-0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.35_k-0.3_n20000_rauto_m4000.log
+    jobid: 45
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.35_k-0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.35_k-0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 23:15:30 2026]
+Finished job 46.
+17 of 95 steps (18%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 23:15:30 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.8_k0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.8_k0.3_n15000_rauto_m4000.log
+    jobid: 135
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.8_k0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.8_k0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 23:20:05 2026]
+Finished job 106.
+18 of 95 steps (19%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 23:20:05 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.55_k-0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.55_k-0.3_n15000_rauto_m4000.log
+    jobid: 75
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.55_k-0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.55_k-0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 23:23:24 2026]
+Finished job 152.
+19 of 95 steps (20%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 23:23:24 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.15_k0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.15_k0.3_n15000_rauto_m4000.log
+    jobid: 15
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.15_k0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.15_k0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 23:31:50 2026]
+Finished job 16.
+20 of 95 steps (21%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 23:31:50 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.45_k0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.45_k0.3_n15000_rauto_m4000.log
+    jobid: 63
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.45_k0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.45_k0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 23:38:27 2026]
+Finished job 76.
+21 of 95 steps (22%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 23:38:27 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.25_k-0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.25_k-0.3_n20000_rauto_m4000.log
+    jobid: 29
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.25_k-0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.25_k-0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 23:42:10 2026]
+Finished job 136.
+22 of 95 steps (23%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 23:42:10 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.5_k0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.5_k0.3_n20000_rauto_m4000.log
+    jobid: 89
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.5_k0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.5_k0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Mon Aug 31 23:48:20 2026]
+Finished job 105.
+23 of 95 steps (24%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Aug 31 23:48:20 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.9_k-0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.9_k-0.3_n20000_rauto_m4000.log
+    jobid: 149
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.9_k-0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.9_k-0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 00:03:50 2026]
+Finished job 45.
+24 of 95 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 00:03:50 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.45_k-0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.45_k-0.3_n15000_rauto_m4000.log
+    jobid: 59
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.45_k-0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.45_k-0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 01:04:29 2026]
+Finished job 135.
+25 of 95 steps (26%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 01:04:29 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.7_k0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.7_k0.3_n15000_rauto_m4000.log
+    jobid: 119
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.7_k0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.7_k0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 01:06:46 2026]
+Finished job 15.
+26 of 95 steps (27%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 01:06:46 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.25_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.25_k-0.3_n20000_rauto_m2000.log
+    jobid: 28
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.25_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.25_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 01:08:45 2026]
+Finished job 75.
+27 of 95 steps (28%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 01:08:45 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.5_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.5_k0.3_n20000_rauto_m2000.log
+    jobid: 88
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.5_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.5_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 01:28:56 2026]
+Finished job 63.
+28 of 95 steps (29%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 01:28:56 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.9_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.9_k-0.3_n20000_rauto_m2000.log
+    jobid: 148
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.9_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.9_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 01:41:47 2026]
+Finished job 29.
+29 of 95 steps (31%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 01:41:47 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.7_k0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.7_k0.3_n15000_rauto_m2000.log
+    jobid: 118
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.7_k0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.7_k0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 01:50:34 2026]
+Finished job 89.
+30 of 95 steps (32%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 01:50:34 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.45_k-0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.45_k-0.3_n15000_rauto_m2000.log
+    jobid: 58
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.45_k-0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.45_k-0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 02:04:38 2026]
+Finished job 149.
+31 of 95 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 02:04:38 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.05_k-0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.05_k-0.3_n15000_rauto_m4000.log
+    jobid: 3
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.05_k-0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.05_k-0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 02:08:45 2026]
+Finished job 59.
+32 of 95 steps (34%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 02:08:45 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.15_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.15_k-0.3_n20000_rauto_m2000.log
+    jobid: 12
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.15_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.15_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 03:14:28 2026]
+Finished job 119.
+33 of 95 steps (35%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 03:14:28 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.4_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.4_k0.3_n20000_rauto_m2000.log
+    jobid: 72
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.4_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.4_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 03:21:51 2026]
+Finished job 28.
+34 of 95 steps (36%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 03:21:51 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.8_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.8_k-0.3_n20000_rauto_m2000.log
+    jobid: 132
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.8_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.8_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 03:23:25 2026]
+Finished job 88.
+35 of 95 steps (37%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 03:23:25 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.35_k-0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.35_k-0.3_n15000_rauto_m2000.log
+    jobid: 42
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.35_k-0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.35_k-0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 03:52:38 2026]
+Finished job 118.
+36 of 95 steps (38%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 03:52:38 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.6_k0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.6_k0.3_n15000_rauto_m2000.log
+    jobid: 102
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.6_k0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.6_k0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 03:57:54 2026]
+Finished job 148.
+37 of 95 steps (39%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 03:57:54 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.65_k-0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.65_k-0.3_n20000_rauto_m4000.log
+    jobid: 93
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.65_k-0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.65_k-0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 04:02:14 2026]
+Finished job 58.
+38 of 95 steps (40%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 04:02:14 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.8_k-0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.8_k-0.3_n15000_rauto_m4000.log
+    jobid: 131
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.8_k-0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.8_k-0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 04:14:20 2026]
+Finished job 3.
+39 of 95 steps (41%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 04:14:20 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.4_k0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.4_k0.3_n15000_rauto_m4000.log
+    jobid: 71
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.4_k0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.4_k0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 04:19:41 2026]
+Finished job 12.
+40 of 95 steps (42%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 04:19:41 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.15_k-0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.15_k-0.3_n15000_rauto_m4000.log
+    jobid: 11
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.15_k-0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.15_k-0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 05:08:23 2026]
+Finished job 42.
+41 of 95 steps (43%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 05:08:24 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp1_k0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp1_k0.3_n20000_rauto_m4000.log
+    jobid: 161
+    reason: Missing output files: results/bias_sensitivity/raw/dp1_k0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp1_k0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 05:19:33 2026]
+Finished job 72.
+42 of 95 steps (44%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 05:19:33 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.6_k-0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.6_k-0.3_n20000_rauto_m4000.log
+    jobid: 101
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.6_k-0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.6_k-0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 05:29:25 2026]
+Finished job 132.
+43 of 95 steps (45%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 05:29:25 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.2_k0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.2_k0.3_n20000_rauto_m4000.log
+    jobid: 41
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.2_k0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.2_k0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 05:38:30 2026]
+Finished job 102.
+44 of 95 steps (46%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 05:38:30 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.3_k0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.3_k0.3_n15000_rauto_m4000.log
+    jobid: 55
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.3_k0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.3_k0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 05:50:55 2026]
+Finished job 93.
+45 of 95 steps (47%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 05:50:55 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.7_k-0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.7_k-0.3_n15000_rauto_m4000.log
+    jobid: 115
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.7_k-0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.7_k-0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 05:51:03 2026]
+Finished job 71.
+46 of 95 steps (48%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 05:51:03 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.1_k0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.1_k0.3_n20000_rauto_m4000.log
+    jobid: 25
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.1_k0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.1_k0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 05:52:57 2026]
+Finished job 131.
+47 of 95 steps (49%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 05:52:57 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.5_k-0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.5_k-0.3_n20000_rauto_m4000.log
+    jobid: 85
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.5_k-0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.5_k-0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 06:00:42 2026]
+Finished job 11.
+48 of 95 steps (51%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 06:00:42 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.95_k0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.95_k0.3_n20000_rauto_m4000.log
+    jobid: 145
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.95_k0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.95_k0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 06:57:32 2026]
+Finished job 161.
+49 of 95 steps (52%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 06:57:33 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.7_k-0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.7_k-0.3_n15000_rauto_m2000.log
+    jobid: 114
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.7_k-0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.7_k-0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 07:03:29 2026]
+Finished job 101.
+50 of 95 steps (53%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 07:03:29 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.3_k0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.3_k0.3_n15000_rauto_m2000.log
+    jobid: 54
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.3_k0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.3_k0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 07:10:22 2026]
+Finished job 55.
+51 of 95 steps (54%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 07:10:22 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.1_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.1_k0.3_n20000_rauto_m2000.log
+    jobid: 24
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.1_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.1_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 07:11:00 2026]
+Finished job 41.
+52 of 95 steps (55%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 07:11:00 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.5_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.5_k-0.3_n20000_rauto_m2000.log
+    jobid: 84
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.5_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.5_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 07:23:53 2026]
+Finished job 115.
+53 of 95 steps (56%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 07:23:53 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.95_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.95_k0.3_n20000_rauto_m2000.log
+    jobid: 144
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.95_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.95_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 07:24:56 2026]
+Finished job 25.
+54 of 95 steps (57%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 07:24:56 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.2_k0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.2_k0.3_n15000_rauto_m2000.log
+    jobid: 38
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.2_k0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.2_k0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 07:33:41 2026]
+Finished job 85.
+55 of 95 steps (58%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 07:33:41 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.6_k-0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.6_k-0.3_n15000_rauto_m2000.log
+    jobid: 98
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.6_k-0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.6_k-0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 07:37:00 2026]
+Finished job 145.
+56 of 95 steps (59%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 07:37:00 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp1_k0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp1_k0.3_n15000_rauto_m2000.log
+    jobid: 158
+    reason: Missing output files: results/bias_sensitivity/raw/dp1_k0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp1_k0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 08:26:05 2026]
+Finished job 114.
+57 of 95 steps (60%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 08:26:05 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.05_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.05_k0.3_n20000_rauto_m2000.log
+    jobid: 8
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.05_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.05_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 08:32:19 2026]
+Finished job 54.
+58 of 95 steps (61%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 08:32:19 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.4_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.4_k-0.3_n20000_rauto_m2000.log
+    jobid: 68
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.4_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.4_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 08:40:22 2026]
+Finished job 84.
+59 of 95 steps (62%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 08:40:22 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.85_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.85_k0.3_n20000_rauto_m2000.log
+    jobid: 128
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.85_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.85_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 08:51:15 2026]
+Finished job 38.
+60 of 95 steps (63%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 08:51:15 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.25_k0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.25_k0.3_n20000_rauto_m4000.log
+    jobid: 33
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.25_k0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.25_k0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 08:52:34 2026]
+Finished job 24.
+61 of 95 steps (64%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 08:52:34 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.2_k-0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.2_k-0.3_n20000_rauto_m4000.log
+    jobid: 37
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.2_k-0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.2_k-0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 09:04:44 2026]
+Finished job 144.
+62 of 95 steps (65%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 09:04:44 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.65_k0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.65_k0.3_n20000_rauto_m4000.log
+    jobid: 97
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.65_k0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.65_k0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 09:07:26 2026]
+Finished job 98.
+63 of 95 steps (66%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 09:07:26 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp1_k-0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp1_k-0.3_n20000_rauto_m4000.log
+    jobid: 157
+    reason: Missing output files: results/bias_sensitivity/raw/dp1_k-0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp1_k-0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 09:08:41 2026]
+Finished job 158.
+64 of 95 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 09:08:41 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.05_k0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.05_k0.3_n15000_rauto_m4000.log
+    jobid: 7
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.05_k0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.05_k0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 09:51:21 2026]
+Finished job 8.
+65 of 95 steps (68%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 09:51:21 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.4_k-0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.4_k-0.3_n15000_rauto_m4000.log
+    jobid: 67
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.4_k-0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.4_k-0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 09:58:57 2026]
+Finished job 68.
+66 of 95 steps (69%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 09:58:57 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.85_k0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.85_k0.3_n15000_rauto_m4000.log
+    jobid: 127
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.85_k0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.85_k0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 10:19:16 2026]
+Finished job 128.
+67 of 95 steps (71%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 10:19:16 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.3_k-0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.3_k-0.3_n15000_rauto_m4000.log
+    jobid: 51
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.3_k-0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.3_k-0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 10:22:53 2026]
+Finished job 37.
+68 of 95 steps (72%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 10:22:53 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.75_k0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.75_k0.3_n15000_rauto_m4000.log
+    jobid: 111
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.75_k0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.75_k0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 10:30:43 2026]
+Finished job 33.
+69 of 95 steps (73%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 10:30:43 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.1_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.1_k-0.3_n20000_rauto_m2000.log
+    jobid: 20
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.1_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.1_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 10:42:23 2026]
+Finished job 7.
+70 of 95 steps (74%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 10:42:23 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.55_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.55_k0.3_n20000_rauto_m2000.log
+    jobid: 80
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.55_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.55_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 10:46:02 2026]
+Finished job 97.
+71 of 95 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 10:46:02 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.95_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.95_k-0.3_n20000_rauto_m2000.log
+    jobid: 140
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.95_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.95_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 10:55:21 2026]
+Finished job 157.
+72 of 95 steps (76%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 10:55:21 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.3_k-0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.3_k-0.3_n15000_rauto_m2000.log
+    jobid: 50
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.3_k-0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.3_k-0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 11:17:34 2026]
+Finished job 67.
+73 of 95 steps (77%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 11:17:34 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.75_k0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.75_k0.3_n15000_rauto_m2000.log
+    jobid: 110
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.75_k0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.75_k0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 11:29:58 2026]
+Finished job 127.
+74 of 95 steps (78%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 11:29:58 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.05_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.05_k-0.3_n20000_rauto_m2000.log
+    jobid: 4
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.05_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.05_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 11:46:33 2026]
+Finished job 51.
+75 of 95 steps (79%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 11:46:33 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.45_k0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.45_k0.3_n20000_rauto_m2000.log
+    jobid: 64
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.45_k0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.45_k0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 11:48:51 2026]
+Finished job 111.
+76 of 95 steps (80%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 11:48:51 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.85_k-0.3_n20000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.85_k-0.3_n20000_rauto_m2000.log
+    jobid: 124
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.85_k-0.3_n20000_rauto_m2000.rds
+    wildcards: cell=dp0.85_k-0.3_n20000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 11:55:01 2026]
+Finished job 20.
+77 of 95 steps (81%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 11:55:01 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.2_k-0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.2_k-0.3_n15000_rauto_m2000.log
+    jobid: 34
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.2_k-0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.2_k-0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 12:18:57 2026]
+Finished job 80.
+78 of 95 steps (82%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 12:18:57 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.65_k0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp0.65_k0.3_n15000_rauto_m2000.log
+    jobid: 94
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.65_k0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp0.65_k0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 12:20:56 2026]
+Finished job 50.
+79 of 95 steps (83%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 12:20:56 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp1_k-0.3_n15000_rauto_m2000.rds
+    log: logs/bias_sensitivity/run_dp1_k-0.3_n15000_rauto_m2000.log
+    jobid: 154
+    reason: Missing output files: results/bias_sensitivity/raw/dp1_k-0.3_n15000_rauto_m2000.rds
+    wildcards: cell=dp1_k-0.3_n15000_rauto_m2000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 12:27:11 2026]
+Finished job 140.
+80 of 95 steps (84%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 12:27:11 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.1_k-0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.1_k-0.3_n20000_rauto_m4000.log
+    jobid: 21
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.1_k-0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.1_k-0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 12:42:59 2026]
+Finished job 110.
+81 of 95 steps (85%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 12:42:59 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.85_k-0.3_n15000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.85_k-0.3_n15000_rauto_m4000.log
+    jobid: 123
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.85_k-0.3_n15000_rauto_m4000.rds
+    wildcards: cell=dp0.85_k-0.3_n15000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 13:00:00 2026]
+Finished job 4.
+82 of 95 steps (86%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 13:00:00 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.95_k-0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.95_k-0.3_n20000_rauto_m4000.log
+    jobid: 141
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.95_k-0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.95_k-0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 13:25:12 2026]
+Finished job 64.
+83 of 95 steps (87%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 13:25:12 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.9_k0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.9_k0.3_n20000_rauto_m4000.log
+    jobid: 153
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.9_k0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.9_k0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 13:27:24 2026]
+Finished job 34.
+84 of 95 steps (88%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Sep  1 13:27:24 2026]
+localrule run_cell:
+    output: results/bias_sensitivity/raw/dp0.55_k0.3_n20000_rauto_m4000.rds
+    log: logs/bias_sensitivity/run_dp0.55_k0.3_n20000_rauto_m4000.log
+    jobid: 81
+    reason: Missing output files: results/bias_sensitivity/raw/dp0.55_k0.3_n20000_rauto_m4000.rds
+    wildcards: cell=dp0.55_k0.3_n20000_rauto_m4000
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Tue Sep  1 13:33:52 2026]
+Finished job 124.
+85 of 95 steps (89%) done
+[Tue Sep  1 13:45:56 2026]
+Finished job 94.
+86 of 95 steps (91%) done
+[Tue Sep  1 13:47:39 2026]
+Finished job 154.
+87 of 95 steps (92%) done
+[Tue Sep  1 13:50:03 2026]
+Finished job 21.
+88 of 95 steps (93%) done
+[Tue Sep  1 13:52:49 2026]
+Finished job 123.
+89 of 95 steps (94%) done
+[Tue Sep  1 14:00:33 2026]
+Finished job 141.
+90 of 95 steps (95%) done
+[Tue Sep  1 14:04:31 2026]
+Finished job 81.
+91 of 95 steps (96%) done
+[Tue Sep  1 14:04:56 2026]
+Finished job 153.
+92 of 95 steps (97%) done
+Complete log: .snakemake/log/2026-08-31T185225.229025.snakemake.log
