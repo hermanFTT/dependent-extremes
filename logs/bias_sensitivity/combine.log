@@ -1,3 +1,3 @@
-[combine] 640 cells -> 5760 rows
-[combine] grid: dep_type=log | dep_par=20 | k=2 | n=8 | r=auto | m=2000,4000
+[combine] 2400 cells -> 21600 rows
+[combine] grid: dep_type=log | dep_par=20 | k=2 | n=6 | r=10,15,20,5,auto | m=2000,4000
 [combine] wrote results/bias_sensitivity/bias_results.rds and results/bias_sensitivity/bias_results.csv

@@ -1,0 +1,3 @@
+[run_bias] cell log|0.9|0.3|6000|20 | S = 10000 | 2 cores | seed 235098
+log=0.9 k=+0.30 n=6000 r=20 m=4000 | 10000/10000 ok | n_exc~300 | 752.3s
+[run_bias] wrote results/bias_sensitivity/raw/dp0.9_k0.3_n6000_r20_m4000.rds

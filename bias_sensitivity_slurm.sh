@@ -3,7 +3,7 @@
 #SBATCH --time=1-00:00:00                 # UNVERIFIED starting guess -- benchmark first! This is
                                            # partition batch`). Benchmark a small subset first (see
                                            # below) before trusting this number.
-#SBATCH --cpus-per-task=200                # Real core budget for the WHOLE run now (all cells run
+#SBATCH --cpus-per-task=120                # Real core budget for the WHOLE run now (all cells run
                                            # as local processes inside this one job/node -- there is
                                            # no cluster-wide distribution anymore). Must not exceed a
                                            # single node's core count or the job will sit PENDING
@@ -71,7 +71,7 @@ module load r
 snakemake \
   --snakefile bias_sensitivity.smk \
   --until run_cell\
-  --cores 200 \
-  --set-threads run_cell=4 \
+  --cores 120 \
+  --set-threads run_cell=2 \
   --keep-going \
  --rerun-incomplete  

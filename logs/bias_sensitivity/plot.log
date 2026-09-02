@@ -1,5 +1,5 @@
-[plot] grid: dep_par=20  n=8  k=2  r=1  m=2  approaches=3
-[plot] filters: k= -0.3  n= 6000  dep=  0.5  r=auto  m= 2000
+[plot] grid: dep_par=20  n=6  k=2  r=5  m=2  approaches=3
+[plot] filters: k= -0.3  n= 4000  dep=  0.5  r=20  m= 2000
 [plot] results/bias_sensitivity/figures/fig1_bias_vs_dep_k.pdf
 [plot] results/bias_sensitivity/figures/fig3_rmse_vs_dep_k.pdf
 [plot] results/bias_sensitivity/figures/fig2_bias_vs_obs_k.pdf
@@ -18,5 +18,6 @@
 [plot] results/bias_sensitivity/figures/fig5_cov_vs_dep_zm.pdf
 [plot] results/bias_sensitivity/figures/fig6_cov_vs_obs_zm.pdf
 [plot] results/bias_sensitivity/figures/fig7_cov_vs_k_zm.pdf
+[plot] results/bias_sensitivity/figures/fig8_rmse_by_runlength_k.pdf
 [plot] results/bias_sensitivity/figures/fig9_rmse_by_returnperiod_zm.pdf
-[plot] wrote 19 figures -> results/bias_sensitivity/figures
+[plot] wrote 20 figures -> results/bias_sensitivity/figures
